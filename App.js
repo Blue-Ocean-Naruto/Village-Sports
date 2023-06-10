@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import HomeScreen from './client/home/index.jsx';
 import LogIn from './client/login/index.jsx';
+import Discover from './client/discover/index.jsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,9 +29,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="login" component={LogIn} />
+        {/* <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="login" component={LogIn} /> */}
         {/* Stack all components below */}
+        <Stack.Screen name="Discover" component={Discover} />
       </Stack.Navigator>
     </NavigationContainer>
   );
