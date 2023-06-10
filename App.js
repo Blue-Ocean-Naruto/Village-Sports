@@ -29,10 +29,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="discover" component={Discover} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="login" component={LogIn} />
+        {/* <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="login" component={LogIn} /> */}
         {/* Stack all components below */}
+        <Stack.Screen name="Discover" component={Discover} />
       </Stack.Navigator>
     </NavigationContainer>
   );
