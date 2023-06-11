@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import RenderInterest from './RenderInterest.jsx'
+import tw from 'tailwind-react-native-classnames'
 
 const interests = [
   {
     id: 1,
     category: 'Sports',
-    items: ['Football', 'American Football', 'Basketball', 'Tennis'],
+    items: ['Football', 'American Football', 'Basketball', 'Tennis', 'Baseball', 'Softball', 'Swimming'],
   },
   {
     id: 2,
@@ -27,7 +28,7 @@ const Discover = () => {
   return (
     <View>
       {interests.map((interest) => (
-        <RenderInterest interest={interest} selected={selected} setSelected={setSelected}/>
+        <RenderInterest key={interest.id} interest={interest} selected={selected} setSelected={setSelected}/>
       ))}
     </View>
   );
