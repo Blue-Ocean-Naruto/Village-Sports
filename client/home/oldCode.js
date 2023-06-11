@@ -1,3 +1,5 @@
+// index js
+
 import React from 'react';
 import { StyleSheet, Text, Button, View } from 'react-native';
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
@@ -100,6 +102,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-export default HomeScreen;
-
