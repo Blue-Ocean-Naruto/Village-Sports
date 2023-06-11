@@ -1,19 +1,11 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import LinearView from '../sharedComponents/LinearView.jsx';
 
 export default function TempChat() {
   return (
-    <View style={styles.container}>
+    <LinearView>
       <Text>Temp Chat Screen!</Text>
-    </View>
+    </LinearView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
