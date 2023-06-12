@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, query, onSnapshot, orderBy, doc, getDoc } from 'firebase/firestore';
+import {db} from '../../firesbase.js';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA0gh8sNqiC00c7JhBxPtSrb1eq9QtFflg",
-  authDomain: "village-sports-chat.firebaseapp.com",
-  projectId: "village-sports-chat",
-  storageBucket: "village-sports-chat.appspot.com",
-  messagingSenderId: "135126543320",
-  appId: "1:135126543320:web:a0362d70e674d2f831a0ad",
-  measurementId: "G-Y3F8NFB8CP"
-}
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCKaccSq0MITMsjgFUfY5kvdIrY7V4P3ic",
+//   authDomain: "learn-firebase-f2840.firebaseapp.com",
+//   projectId: "learn-firebase-f2840",
+//   storageBucket: "learn-firebase-f2840.appspot.com",
+//   messagingSenderId: "972510045749",
+//   appId: "1:972510045749:web:f390d59e37b10eeb3c737c"
+// }
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 
-const firestore = getFirestore(app);
+// const firestore = getFirestore(app);
 
 const ChatRoom1 = ({ navigation }) => {
   const [message, setMessage] = useState('');
@@ -25,7 +25,7 @@ const ChatRoom1 = ({ navigation }) => {
 
   useEffect(() => {
 
-    const q = query(collection(firestore, "Chat Room", "room1", "messages"), orderBy("createdAt")); // Replace "messages" with your collection name
+    const q = query(collection(db, "Chat Room", "room1", "messages"), orderBy("createdAt")); // Replace "messages" with your collection name
     const unsubscribe = onSnapshot(q, snapshot => {
       let messages = [];
       snapshot.docs.forEach(doc => {
