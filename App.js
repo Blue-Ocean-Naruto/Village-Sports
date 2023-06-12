@@ -1,50 +1,28 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './client/home/index.jsx';
+import HomeScreen from './client/home/HomeScreen.jsx';
 import LogIn from './client/login/index.jsx';
 import Discover from './client/discover/index.jsx';
 
-const Stack = createNativeStackNavigator();
+import NavStackHeader from './client/sharedComponents/NavStackHeader.jsx';
 
-// const HomeScreen = ({navigation}) => {
-//   return (
-//     <Button
-//       title="Go to Jane's profile"
-//       onPress={() =>
-//         navigation.navigate('Profile', {name: 'Jane'})
-//       }
-//     />
-//   );
-// };
-// const ProfileScreen = ({navigation, route}) => {
-//   return <Text>This is {route.params.name}'s profile</Text>;
-// };
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="login" component={LogIn} /> */}
-        {/* Stack all components below */}
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+        <Stack.Screen name="login" component={LogIn} />
         <Stack.Screen name="Discover" component={Discover} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
