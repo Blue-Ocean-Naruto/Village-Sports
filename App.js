@@ -19,8 +19,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
-        <Stack.Screen name="login" component={LogIn} />
+        {/* <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+        <Stack.Screen name="login" component={LogIn} /> */}
         <Stack.Screen name="Discover" component={Discover} />
         <Stack.Screen name="Recommend" component={Recommend} />
       </Stack.Navigator>
