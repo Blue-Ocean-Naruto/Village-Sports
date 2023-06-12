@@ -64,6 +64,16 @@ const SignUp = () => {
           <Text>Login</Text>
         </TouchableOpacity>
       </View>
+
+      <View>
+        <TouchableOpacity
+          onPress={e => {
+            navigation.navigate('Discover');
+          }}
+        >
+          <Text>Discover</Text>
+        </TouchableOpacity>
+      </View>
     </KeyboardAvoidingView>
   );
 };

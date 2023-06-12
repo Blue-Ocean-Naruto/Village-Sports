@@ -12,7 +12,7 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.navigate('Discover'); // change to 'Home' later
+        navigation.navigate('HomeScreen'); // change to 'Home' later
         // input logic that gets the username through the input email and shares it with the rest of app
       }
     })

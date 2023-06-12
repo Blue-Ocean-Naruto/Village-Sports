@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Button } from 'react-native';
 import RenderInterest from './RenderInterest.jsx'
 import tw from 'tailwind-react-native-classnames'
 
@@ -22,14 +22,22 @@ const interests = [
 ];
 
 
-const Discover = () => {
+const Discover = ({navigation}) => {
   const [selected, setSelected] = useState([]);
 
   return (
     <View>
-      {interests.map((interest) => (
-        <RenderInterest key={interest.id} interest={interest} selected={selected} setSelected={setSelected}/>
-      ))}
+      <View style={[tw`m-2`]}>
+        {interests.map((interest) => (
+          <RenderInterest key={interest.id} interest={interest} selected={selected} setSelected={setSelected}/>
+          ))}
+      </View>
+      <Button
+        title="Go!"
+        onPress={() =>
+          navigation.navigate('Recommend')
+        }
+      />
     </View>
   );
 };
