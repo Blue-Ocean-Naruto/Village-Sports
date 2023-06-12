@@ -3,18 +3,15 @@ import { Text, Button, View } from 'react-native';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
+import ChatSelection from '../Chat/index.jsx'
 import LinearView from '../sharedComponents/LinearView.jsx';
-
-import LogIn from '../login/index.jsx';
+import LogIn from '../login/Login.jsx';
 import Home from './Home.jsx';
 import TempProfile from './TempProfile.jsx';
 import TempWatchList from './TempWatchList.jsx';
 import TempChat from './TempChat.jsx';
-
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
-
 const HomeStack = () => {
   return (
     <Stack.Navigator>
@@ -23,7 +20,6 @@ const HomeStack = () => {
     </Stack.Navigator>
   );
 }
-
 const HomeScreen = ({ navigation }) => {
   return (
     <Tab.Navigator screenOptions={{
@@ -65,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
           />
         )
       }}/>
-      <Tab.Screen name="Chat" component={TempChat} options={{
+      <Tab.Screen name="Chat" component={ChatSelection} options={{
         tabBarIcon: (tabInfo) => (
           <Ionicons
             name="ios-chatbubble-ellipses-outline"
@@ -77,7 +73,4 @@ const HomeScreen = ({ navigation }) => {
     </Tab.Navigator>
   );
 };
-
-
 export default HomeScreen;
-
