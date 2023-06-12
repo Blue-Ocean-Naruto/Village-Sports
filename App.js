@@ -11,6 +11,7 @@ import LogIn from './client/login/index.jsx';
 import Discover from './client/discover/index.jsx';
 import Recommend from './client/discover/Recommend.jsx'
 
+import LeagueTest from './client/home/LeagueTest.jsx';
 import NavStackHeader from './client/sharedComponents/NavStackHeader.jsx';
 
 const Stack = createNativeStackNavigator();
@@ -19,6 +20,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen name="LeagueTest" component={LeagueTest} /> */}
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
         <Stack.Screen name="login" component={LogIn} />
         <Stack.Screen name="Discover" component={Discover} />
