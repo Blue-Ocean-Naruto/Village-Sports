@@ -7,7 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import HomeScreen from './client/home/index.jsx';
 import LogIn from './client/login/index.jsx';
-import LeagueMap from './client/map/index.jsx';
+import LeagueMap from './client/map/Map.jsx';
 
 const Stack = createNativeStackNavigator();
 
