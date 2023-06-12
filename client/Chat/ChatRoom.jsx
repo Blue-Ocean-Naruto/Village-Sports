@@ -21,7 +21,7 @@ const ChatRoom1 = ({ navigation }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
 
-  console.log(chatMessages)
+  // console.log(chatMessages)
 
   useEffect(() => {
 
