@@ -44,16 +44,16 @@ const leagues = [
 const Recommend = () => {
 
   return (
-    <View style={[tw`flex flex-col items-center`]}>
+    <View style={[tw`flex flex-col items-center justify-around`]}>
       {leagues.slice(0,3).map(league => (
-        <TouchableOpacity key={league.id} style={[tw`flex flex-col justify-between border border-gray-300 p-2 my-5 w-5/6 h-1/2 rounded-lg`]}>
+        <TouchableOpacity key={league.id} style={[tw`flex flex-col border border-gray-300 p-2 my-5 w-5/6 h-1/3 rounded-lg`]}>
           <Text style={[tw`text-xl`]}>
             {league.name}
           </Text>
-          <Text style={[tw`self-start bg-gray-300 m-1 p-1 rounded-md`, {width: 'auto'}]}>
+          <Text style={[tw`self-start bg-gray-300 my-1 p-1 rounded-lg`, {width: 'auto'}]}>
             {league.sport}
           </Text>
-          <Image style={[tw`h-2/3`]} source={require('../../assets/VillageSportsLogo.png')}/>
+          <Image style={[tw`self-center h-1/2 w-1/3`]} source={require('../../assets/VillageSportsLogo.png')}/>
         </TouchableOpacity>
       ))}
     </View>
