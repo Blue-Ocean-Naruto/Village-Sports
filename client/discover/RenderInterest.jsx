@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import tw from 'tailwind-react-native-classnames'
 
-const RenderInterest = ({interest, selected, setSelected}) => {
+const RenderInterest = ({ interest, selected, setSelected}) => {
   const [show, setShow] = useState(false)
 
   const toggleInterest = (item) => {
