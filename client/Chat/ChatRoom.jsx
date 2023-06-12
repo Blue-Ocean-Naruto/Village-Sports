@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, onSnapshot, orderBy } from 'firebase/firestore';
+import { getFirestore, collection, query, onSnapshot, orderBy, doc, getDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA0gh8sNqiC00c7JhBxPtSrb1eq9QtFflg",
@@ -17,21 +17,18 @@ const app = initializeApp(firebaseConfig);
 
 const firestore = getFirestore(app);
 
-
-
 const ChatRoom1 = ({ navigation }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
+
   console.log(chatMessages)
 
   useEffect(() => {
-    const q = query(collection(firestore, "Chat Room", 'room1', "messages"), orderBy("createdAt"));
 
+    const q = query(collection(firestore, "Chat Room", "room1", "messages"), orderBy("createdAt")); // Replace "messages" with your collection name
     const unsubscribe = onSnapshot(q, snapshot => {
-      // console.log(snapshot)
       let messages = [];
-      snapshot.forEach(doc => {
-        // console.log(doc)
+      snapshot.docs.forEach(doc => {
         messages.push(doc.data());
       });
       setChatMessages(messages);
