@@ -9,7 +9,7 @@ export default function Home({ navigation }) {
       <Button
         title="Goes to Login; Change to Discover"
         onPress={() =>
-          navigation.navigate('login')
+          navigation.navigate('Login')
         }
       />
     </LinearView>

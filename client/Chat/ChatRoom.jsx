@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, query, onSnapshot, orderBy, doc, getDoc } from 'firebase/firestore';
-import {db} from '../../firesbase.js';
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCKaccSq0MITMsjgFUfY5kvdIrY7V4P3ic",
-//   authDomain: "learn-firebase-f2840.firebaseapp.com",
-//   projectId: "learn-firebase-f2840",
-//   storageBucket: "learn-firebase-f2840.appspot.com",
-//   messagingSenderId: "972510045749",
-//   appId: "1:972510045749:web:f390d59e37b10eeb3c737c"
-// }
-
-// const app = initializeApp(firebaseConfig);
-
-// const firestore = getFirestore(app);
+import { db } from '../../firebase';
+import { collection, query, onSnapshot, orderBy, doc, getDoc } from 'firebase/firestore';
 
 const ChatRoom1 = ({ navigation }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
 
-  // console.log(chatMessages)
+  console.log(chatMessages)
 
   useEffect(() => {
 

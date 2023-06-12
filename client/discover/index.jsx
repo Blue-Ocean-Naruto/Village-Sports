@@ -26,7 +26,7 @@ const Discover = ({navigation}) => {
   const [selected, setSelected] = useState([]);
 
   return (
-    <View>
+    <View style={[tw`flex flex-col flex-1 justify-between`]}>
       <View style={[tw`m-2`]}>
         {interests.map((interest) => (
           <RenderInterest key={interest.id} interest={interest} selected={selected} setSelected={setSelected}/>
