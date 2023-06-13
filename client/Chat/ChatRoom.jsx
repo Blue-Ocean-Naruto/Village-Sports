@@ -13,7 +13,7 @@ const ChatRoom = ({ navigation, route }) => {
     navigation.setOptions({
       headerTitle: route.params.roomName === 'room1' ? 'Softball League' : 'Chat Room Two',
     });
-  }, [navigation, route.params.roomName]);
+  }, [route.params.roomName]);
   useEffect(() => {
 
     const q = query(collection(db, "Chat Room", roomName, "messages"), orderBy("createdAt")); // Replace "messages" with your collection name
