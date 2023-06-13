@@ -21,7 +21,6 @@ const HomeStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={LogIn} />
-      <Stack.Screen name="map" component={LeagueMap} />
     </Stack.Navigator>
   );
 }
