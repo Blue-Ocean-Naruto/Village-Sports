@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image, SafeAreaView, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 import tw from 'tailwind-react-native-classnames'
 
 const leagues = [
@@ -44,20 +46,35 @@ const leagues = [
 const Recommend = () => {
 
   return (
-    <View style={[tw`flex flex-col items-center justify-around`]}>
-      {leagues.slice(0,3).map(league => (
-        <TouchableOpacity key={league.id} style={[tw`flex flex-col border border-gray-300 p-2 my-5 w-5/6 h-1/3 rounded-lg`]}>
-          <Text style={[tw`text-xl`]}>
-            {league.name}
-          </Text>
-          <Text style={[tw`self-start bg-gray-300 my-1 p-1 rounded-lg`, {width: 'auto'}]}>
-            {league.sport}
-          </Text>
-          <Image style={[tw`self-center h-1/2 w-1/3`]} source={require('../../assets/VillageSportsLogo.png')}/>
-        </TouchableOpacity>
-      ))}
-    </View>
+    <LinearGradient style={[styles.gradient]} colors={["#272838", "rgba(206, 185, 146, 0.35)"]}>
+      <SafeAreaView style={styles.container}>
+        <View style={[tw`flex flex-col items-center justify-around my-2`]}>
+          {leagues.slice(0,3).map(league => (
+            <TouchableOpacity key={league.id} style={[tw`flex flex-col border border-gray-500 p-2 w-5/6 h-1/3 rounded-lg`]}>
+              <Text style={[tw`text-xl text-white`]}>
+                {league.name}
+              </Text>
+              <Text style={[tw`self-start bg-gray-300 my-1 p-1 rounded-lg`, {width: 'auto'}]}>
+                {league.sport}
+              </Text>
+              <Image style={[tw`self-center h-1/2 w-1/3`]} source={require('../../assets/VillageSportsLogo.png')}/>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </SafeAreaView>
+    </LinearGradient>
   )
 }
+
+const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+    backgroundColor: '#272838'
+  },
+  container: {
+    flex: 1,
+    marginHorizontal: 15,
+  },
+})
 
 export default Recommend
