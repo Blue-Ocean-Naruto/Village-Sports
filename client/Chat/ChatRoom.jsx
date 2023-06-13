@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   messageContainer: {
-    alignSelf: 'flex-start',
+    // alignSelf: 'flex-start',
+    justifyContent: 'left',
     marginBottom: 20,
   },
   userName: {
