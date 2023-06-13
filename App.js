@@ -24,11 +24,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
+        {/* <Stack.Screen name="Login" component={Login} /> */}
+        {/* <Stack.Screen name="SignUp" component={SignUp} /> */}
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
         <Stack.Screen name="Discover" component={Discover} />
-        <Stack.Screen name="Recommend" component={Recommend} />
+        <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
         <Stack.Screen name="chat" component={ChatSelection} />
         <Stack.Screen name="chatRoom" component={ChatRoom1} />
       </Stack.Navigator>
