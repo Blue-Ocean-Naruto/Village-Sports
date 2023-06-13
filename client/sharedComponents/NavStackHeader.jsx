@@ -16,28 +16,34 @@ import { View, Image, StyleSheet, Text, SafeAreaView } from 'react-native';
 
 export default function NavStackHeader () {
   return (
-    <SafeAreaView style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require('../../assets/VillageSportsLogo.png')}
-        contentFit='contain'
-      />
-      <Text style={styles.text}>Your Village</Text>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Image
+          style={styles.image}
+          source={require('../../assets/VillageSportsLogo.png')}
+          contentFit='contain'
+        />
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row'
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
+    alignContents: 'flex-end',
+    justifyContent: 'flex-end'
   },
   image: {
     width: 40,
     height: 40,
-    zIndex: 999,
     marginRight: 20,
   },
   text: {
-    color: '#fff'
+    color: '#fff',
+    justifyContent: 'center'
   }
 })
