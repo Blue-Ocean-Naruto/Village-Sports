@@ -38,7 +38,7 @@ const Discover = ({navigation}) => {
           <Button
             title="Go!"
             onPress={() =>
-              navigation.navigate('Recommend', {navigation: navigation, selected: selected})
+              navigation.navigate('Recommend', {selected: selected})
             }
             />
         </View>
