@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Button, StyleSheet, SafeAreaView } from 'react-native';
 import RenderInterest from './RenderInterest.jsx'
-import Recommend from './Recommend.jsx'
 import tw from 'tailwind-react-native-classnames'
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -39,7 +38,7 @@ const Discover = ({navigation}) => {
           <Button
             title="Go!"
             onPress={() =>
-              navigation.navigate('Recommend')
+              navigation.navigate('Recommend', {selected: selected})
             }
             />
         </View>
