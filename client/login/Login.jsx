@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '80%%'
+//    width: '80%%'
   },
   logo: {
 
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-    minWidth: '100%',
+//    minWidth: '100%',
     textAlign: 'center',
   },
   loginButton: {
