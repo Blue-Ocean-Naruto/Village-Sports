@@ -7,6 +7,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import LinearView from '../sharedComponents/LinearView.jsx';
 
 import LogIn from '../login/index.jsx';
+import LeagueMap from '../map/Map.jsx';
 import Home from './Home.jsx';
 import TempProfile from './TempProfile.jsx';
 import TempWatchList from './TempWatchList.jsx';
@@ -20,6 +21,7 @@ const HomeStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
       <Stack.Screen name="Login" component={LogIn} />
+      <Stack.Screen name="map" component={LeagueMap} />
     </Stack.Navigator>
   );
 }

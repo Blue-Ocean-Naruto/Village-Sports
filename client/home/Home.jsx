@@ -7,9 +7,9 @@ export default function Home({ navigation }) {
     <LinearView>
       <Text style={{color: '#fff'}}>Home Screen</Text>
       <Button
-        title="Goes to Login; Change to Discover"
+        title="Goes to map"
         onPress={() =>
-          navigation.navigate('login')
+          navigation.navigate('map')
         }
       />
     </LinearView>

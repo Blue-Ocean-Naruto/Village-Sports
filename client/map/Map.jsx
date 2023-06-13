@@ -7,18 +7,42 @@ import LeagueCard from './LeagueCard.jsx';
 
 const sampleLeagues = [
   {
-    "id": 1,
-    "name": "NorCal Tennis",
-    "location": {
-      "latitude": 37.432651143406794,
-      "longitude": -122.14180448244987,
+    id: 1,
+    name: 'NorCal Tennis',
+    address: '1920 N Loop Rd, Alameda, CA 94502',
+    logo: 'https://i.ibb.co/VNrMfDs/istockphoto-1206838436-2048x2048.jpg',
+    location: {
+      latitude: 37.432651143406794,
+      longitude: -122.14180448244987,
     },
-    "sport": "Tennis"
+    sport: 'Tennis',
+  },
+  {
+    id: 2,
+    name: 'Golden Gate Premier League',
+    address: 'Golden Gate Bridge, San Francisco, CA',
+    logo: 'https://i.ibb.co/Jk5VNqm/football-logos-2023-design-template-ba96ccb6c8645a69c9eef50607d84d34-screen.jpg',
+    location: {
+      latitude: 37.7579909751779,
+      longitude: -122.42724888291282,
+    },
+    sport: 'Football',
   },
 ];
 
 export default function LeagueMap() {
-  const [currentLeague, setCurrentLeague] = useState('');
+  const [displayID, setDisplayID] = useState('');
+
+  function findCurrentLeague(currentID) {
+    for (let i = 0; i < sampleLeagues.length; i++) {
+      if (sampleLeagues[i].id === currentID) {
+        return sampleLeagues[i];
+      }
+    }
+    return '';
+  }
+
+  const currentLeague = findCurrentLeague(displayID);
 
   return (
     <View style={styles.container}>
@@ -34,9 +58,10 @@ export default function LeagueMap() {
       >
         {sampleLeagues.map((league) => (
           <CustomMarker
+            key={league.id}
             league={league}
-            currentLeague={currentLeague}
-            setCurrentLeague={setCurrentLeague}
+            displayID={displayID}
+            setDisplayID={setDisplayID}
           />
         ))}
       </MapView>
