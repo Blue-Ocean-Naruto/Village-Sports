@@ -42,14 +42,10 @@ export default function LinearView ({ children }) {
 const styles = StyleSheet.create({
   gradient: {
     flex: 1,
-    backgroundColor: '#272838',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#272838'
   },
   container: {
     flex: 1,
-    marginHorizontal: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginHorizontal: 10
   },
 });

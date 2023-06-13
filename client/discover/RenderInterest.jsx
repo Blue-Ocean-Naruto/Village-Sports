@@ -16,13 +16,13 @@ const RenderInterest = ({ interest, selected, setSelected}) => {
   return (
     <View style={tw`border-b border-gray-300 py-2`}>
       <TouchableOpacity onPress={() => setShow(!show)}>
-        <Text style={[tw`text-xl`]}>{interest.category}</Text>
+        <Text style={[tw`text-xl text-white`]}>{interest.category}</Text>
       </TouchableOpacity>
       <View style={tw`flex flex-row flex-wrap`}>
       {show &&
         interest.items.map((item) => (
           <TouchableOpacity key={item} onPress={() => toggleInterest(item)}>
-            <Text style={[tw`bg-gray-300 m-1 p-1 rounded-md ${selected.includes(item) && 'bg-gray-400'}`]}>
+            <Text style={[tw`bg-gray-300 m-1 p-1 rounded-md ${selected.includes(item) && 'bg-gray-500'}`]}>
               {item}
             </Text>
           </TouchableOpacity>
