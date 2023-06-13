@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { db } from '../../firebase';
 import { collection, query, onSnapshot, orderBy, doc, getDoc, addDoc, serverTimestamp } from 'firebase/firestore';
+import LinearView from '../sharedComponents/LinearView.jsx'
 
-const ChatRoom = ({ route }) => {
+const ChatRoom = ({ navigation, route }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
   var myUserName = 'MyuserName';
+  React.useEffect(() => {
+    navigation.setOptions({
+      headerTitle: route.params.roomName === 'room1' ? 'Softball League' : 'Chat Room Two',
+    });
+  }, [navigation, route.params.roomName]);
   useEffect(() => {
 
     const q = query(collection(db, "Chat Room", roomName, "messages"), orderBy("createdAt")); // Replace "messages" with your collection name
@@ -32,45 +38,46 @@ const ChatRoom = ({ route }) => {
       setMessage('');  // Clear the input field after the message is sent
     }
   };
-
-
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.chatContainer}>
-        {chatMessages.map((chat, index) => {
-          if (chat.user_name === myUserName) {
-            return (
-              <View key={index} style={styles.myMessageContainer}>
-                <Text style={styles.myUserName}>{chat.user_name}</Text>
-                <View style={styles.myMessageBubble}>
-                  <Text style={styles.myUserMessage}>{chat.message}</Text>
+    <LinearView>
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.chatContainer}>
+          {chatMessages.map((chat, index) => {
+            if (chat.user_name === myUserName) {
+              return (
+                <View key={index} style={styles.myMessageContainer}>
+                  <Text style={styles.myUserName}>{chat.user_name}</Text>
+                  <View style={styles.myMessageBubble}>
+                    <Text style={styles.myUserMessage}>{chat.message}</Text>
+                  </View>
                 </View>
-              </View>
-            );
-          } else {
-            return (
-              <View key={index} style={styles.messageContainer}>
-                <Text style={styles.userName}>{chat.user_name}</Text>
-                <View style={styles.messageBubble}>
-                  <Text style={styles.userMessage}>{chat.message}</Text>
+              );
+            } else {
+              return (
+                <View key={index} style={styles.messageContainer}>
+                  <Text style={styles.userName}>{chat.user_name}</Text>
+                  <View style={styles.messageBubble}>
+                    <Text style={styles.userMessage}>{chat.message}</Text>
+                  </View>
                 </View>
-              </View>
-            );
-          }
-        })}
-      </ScrollView>
-      <KeyboardAvoidingView behavior="padding" style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={message}
-          onChangeText={setMessage}
-          placeholder="Type your message..."
-          multiline
-          autoFocus
-        />
-        <Button title="Send" onPress={onSend} />
-      </KeyboardAvoidingView>
-    </View>
+              );
+            }
+          })}
+        </ScrollView>
+        <KeyboardAvoidingView behavior="padding" style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            value={message}
+            onChangeText={setMessage}
+            placeholder="Type your message..."
+            placeholderTextColor="#CEB992"
+            multiline
+            autoFocus
+          />
+          <Button title="Send" onPress={onSend} color = '#272838'/>
+        </KeyboardAvoidingView>
+      </View>
+    </LinearView>
   );
 };
 
@@ -86,28 +93,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderTopWidth: 1,
-    borderColor: 'gray',
+    // borderColor: 'gray',
     padding: 10,
   },
   input: {
     flex: 1,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    // borderColor: 'gray',
     borderRadius: 5,
     padding: 5,
   },
   messageContainer: {
-    // alignSelf: 'flex-start',
+    alignSelf: 'flex-start',
     justifyContent: 'left',
     marginBottom: 20,
   },
   userName: {
     fontWeight: 'bold',
+    color: 'white',
   },
   messageBubble: {
     borderWidth: 1,
-    borderColor: '#ddd',
+    // borderColor: '#ddd',
     backgroundColor: '#CEB992',
     borderRadius: 10,
     padding: 10,
@@ -121,11 +129,12 @@ const styles = StyleSheet.create({
   },
   myUserName: {
     fontWeight: 'bold',
+    color: 'white',
     alignSelf: 'flex-end',
   },
   myMessageBubble: {
     borderWidth: 1,
-    borderColor: '#ddd',
+    // borderColor: '#ddd',
     backgroundColor: '#add8e6',  // Light blue background
     borderRadius: 5,
     padding: 10,

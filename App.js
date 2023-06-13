@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
@@ -21,6 +21,7 @@ const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -31,7 +32,7 @@ export default function App() {
         <Stack.Screen name="Discover" component={Discover} />
         <Stack.Screen name="Recommend" component={Recommend} />
         <Stack.Screen name="chat" component={ChatSelection} />
-        <Stack.Screen name="chatRoom" component={ChatRoom} />
+        <Stack.Screen name="chatRoom" component={ChatRoom} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}, headerTintColor: '#D0BF9F'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

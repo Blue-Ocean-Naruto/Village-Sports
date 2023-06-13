@@ -4,8 +4,6 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import ChatSelection from '../Chat/index.jsx'
-
 import LinearView from '../sharedComponents/LinearView.jsx';
 
 import Discover from '../discover/index.jsx';

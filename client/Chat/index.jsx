@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-import LinearView from '../sharedComponents/LinearView.jsx'
+import LinearView from '../sharedComponents/LinearView.jsx';
+
+
 
 const ChatSelection = ({ navigation }) => {
+
+
   return (
-    <LinearView>
-      <Text style={styles.title}>
-        Messages
-      </Text>
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => navigation.navigate('chatRoom', { roomName: 'room1' })}>
-          <Text style={styles.buttonText}>Softball League</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => navigation.navigate('chatRoom', { roomName: 'room2' })}>
-          <Text style={styles.buttonText}>Chat Room Two</Text>
-        </TouchableOpacity>
-      </View>
-    </LinearView>
+      <LinearView>
+        <Text style={styles.title}>
+          Messages
+        </Text>
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => {
+              navigation.navigate('chatRoom', { roomName: 'room1' });
+            }}>
+            <Text style={styles.buttonText}>Softball League</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => {
+              navigation.navigate('chatRoom', { roomName: 'room2' });
+            }}>
+            <Text style={styles.buttonText}>Chat Room Two</Text>
+          </TouchableOpacity>
+        </View>
+      </LinearView>
   );
 };
 
@@ -30,7 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   buttonContainer: {
     borderWidth: 1,
@@ -47,6 +55,7 @@ const styles = StyleSheet.create({
   },
   title: {
     alignSelf: 'flex-start',
+    color: 'white',
   }
 });
 
