@@ -12,34 +12,38 @@ but after changing the text to your screen's name, you could also add an icon or
 */
 
 import React from 'react';
-import { View, Image, StyleSheet, Text } from 'react-native';
+import { View, Image, StyleSheet, Text, SafeAreaView } from 'react-native';
 
 export default function NavStackHeader () {
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require('../../assets/VillageSportsLogo.png')}
-        contentFit='contain'
-      />
-      <Text style={styles.text}>Your Village</Text>
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Image
+          style={styles.image}
+          source={require('../../assets/VillageSportsLogo.png')}
+          contentFit='contain'
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'flex-end',
+    alignContents: 'flex-end',
+    justifyContent: 'flex-end'
   },
   image: {
-    width: 50,
-    height: 50,
-    zIndex: 999,
+    width: 40,
+    height: 40,
     marginRight: 20,
   },
   text: {
-    color: '#fff'
+    color: '#fff',
+    justifyContent: 'center'
   }
 })
