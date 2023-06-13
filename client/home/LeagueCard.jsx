@@ -5,11 +5,13 @@ import EventInfo from './EventInfo.jsx';
 export default function LeagueCard({ league }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.leagueName}>{league.name}</Text>
+      <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <Text style={styles.leagueName}>{league.name}</Text>
+      </View>
       <Text style={styles.teamName}>{league.teams[0].name}</Text>
 
       <ScrollView style={styles.infoCard}>
-        {league.teams[0].events.map((event) => <EventInfo event={event} key={event.id}/>)}
+        {league.teams[0].events.map((event, i) => <EventInfo event={event} key={i}/>)}
       </ScrollView>
     </View>
   )
@@ -22,15 +24,15 @@ const styles = StyleSheet.create({
     height: 200,
     width: 150,
     backgroundColor: 'rgba(0,0,0,0.2)',
-    filter: 'drop-shadow(-4px 4px 2px rgba(0,0,0,0.8))',
-    marginRight: 5
+    marginRight: 7
   },
   leagueName: {
     color: 'white',
     backgroundColor: '#272838',
     height: 30,
+    width: 125,
     display: 'flex',
-    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
     fontSize: 10,
     marginBottom: 5
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     color: '#CEB992',
     fontSize: 12,
     display: 'flex',
-    alignItems: 'center',
+    alignSelf: 'center',
     justifyContent: 'center',
     marginBottom: 5
   },
