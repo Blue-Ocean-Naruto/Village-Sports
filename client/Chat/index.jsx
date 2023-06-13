@@ -10,7 +10,13 @@ const ChatSelection = ({ navigation }) => {
         <Button
           title="Chat Room One"
           onPress={() =>
-            navigation.navigate('chatRoom')
+            navigation.navigate('chatRoom', { roomName: 'room1' })
+          }
+        />
+        <Button
+          title="Chat Room Two"
+          onPress={() =>
+            navigation.navigate('chatRoom', { roomName: 'room2' })
           }
         />
       </View>
