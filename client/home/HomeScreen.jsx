@@ -21,7 +21,7 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
-      <Stack.Screen name="Discover" component={Discover} />
+      <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
