@@ -33,6 +33,16 @@ exports.mockData = {
               date: 'July 6, 2023',
               time: '6:00PM'
             }
+          ],
+          announcements: [
+            {
+              id: 89,
+              text: "Starting in July the Southcourt Fields will be under a landscaping remodel, so we'll be moving our regular practice location to the fields by Kinder Elementary"
+            },
+            {
+              id: 312,
+              text: "We're collecting group buy-ins ($10/person) for the After Scrim Dinner. Get those to the Team Captain by Friday, June 30th"
+            }
           ]
         }
       ]
@@ -53,6 +63,12 @@ exports.mockData = {
           members: ['William', 'Matt', 'James', 'Alexander', 'Kelvin'],
           events: [
             {
+              name: 'Game vs Icebreakers',
+              location: 'Glacier Arena',
+              date: 'June 17, 2023',
+              time: '7:00PM'
+            },
+            {
               name: 'Give-and-go Drills',
               location: 'Blizzard Bay Rink',
               date: 'June 20, 2023',
@@ -63,6 +79,12 @@ exports.mockData = {
               location: 'Blizzard Bay Rink',
               date: 'June 28, 2023',
               time: '3:30PM'
+            }
+          ],
+          announcements: [
+            {
+              id: 8,
+              text: "Attention all members of the Frost King hockey team! We are thrilled to announce our upcoming game against the Icebreakers this Saturday, June 17th at 7PM. Our team has been training hard, refining our skills, and strategizing to come out strong and secure the victory. We're ready to showcase our teamwork, determination, and love for the game."
             }
           ]
         }
@@ -100,6 +122,12 @@ exports.mockData = {
               location: "Summoner's Rift",
               date: 'July 16, 2023',
               time: '9:45PM'
+            }
+          ],
+          announcements: [
+            {
+              id: 765,
+              text: "Due to popular demand, we are pleased to announce the formation of our brand-new TFT team, Fortune's Fury. Stay tuned for further updates"
             }
           ]
         }
@@ -144,6 +172,20 @@ exports.mockData = {
               date: 'July 1, 2023',
               time: '1:00PM'
             }
+          ],
+          announcements: [
+            {
+              id: 17,
+              text: "Attention Volley Vipers! We are excited to announce the launch of our new website, where you can find all the latest updates, match schedules, standings, and more. Visit the URL and explore the features to stay connected with our tennis community."
+            },
+            {
+              id: 390,
+              text: "Should we start a tournament bracket for the summer? Let us know in the poll"
+            },
+            {
+              id: 555,
+              text: "Vipers, make sure you are checking the locations for drill practice because we are rotating with other teams in the league"
+            }
           ]
         }
       ]
@@ -174,6 +216,16 @@ exports.mockData = {
               location: "Maverick's Gym",
               date: 'June 19, 2023',
               time: '6:45PM'
+            }
+          ],
+          announcements: [
+            {
+              id: 42,
+              text: "Tryouts for team quarterback in the August lineup will start NEXT WEEK. Let's go, Rhinos!"
+            },
+            {
+              id: 962,
+              text: "Though not official, Coach is in talks with Jeanine from the varsity cheer squad to have them cheer for us on our next big game 👀"
             }
           ]
         }
@@ -223,6 +275,12 @@ exports.mockData = {
               location: "Alley-Oop Arena",
               date: 'August 17, 2023',
               time: '5:45PM'
+            }
+          ],
+          announcements: [
+            {
+              id: 33382,
+              text: "Caleb, you left your water bottle in the locker room. It's in the Lost and Found at the front desk of Alley-Oop Arena"
             }
           ]
         }
