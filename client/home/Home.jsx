@@ -14,7 +14,7 @@ export default function Home({ navigation }) {
       </ScrollView>
       <Text style={styles.myLeagues}>Announcements</Text>
       <Pressable style={styles.button} onPress={() =>
-          navigation.navigate('login')
+          navigation.navigate('Discover')
       }>
         <Text style={styles.discover}>Discover</Text>
       </Pressable>
