@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
     width: '80%%'
   },
   logo: {
-
+    width: 200,
+    height: 200,
   },
   inputContainer: {
 

@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Image, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
+import { useRoute } from '@react-navigation/native';
 
-const Login = () => {
+const Login = ({route}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { login } = route.params;
   const navigation = useNavigation();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.navigate('HomeScreen'); // change to 'Home' later
-        // input logic that gets the username through the input email and shares it with the rest of app
+        login(true);
       }
     })
     return unsubscribe;
@@ -36,12 +37,12 @@ const Login = () => {
         style={styles.container}
         behavior="padding"
       >
-        {/* <View>
+        <View>
           <Image
             style={styles.logo}
             source={Logo}
           />
-        </View> */}
+        </View>
         <View
           style={styles.inputContainer}
         >
@@ -103,7 +104,8 @@ const styles = StyleSheet.create({
     width: '80%%'
   },
   logo: {
-
+    width: 200,
+    height: 200,
   },
   inputContainer: {
 
