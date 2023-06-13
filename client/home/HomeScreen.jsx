@@ -10,6 +10,7 @@ import Home from './Home.jsx';
 import TempProfile from './TempProfile.jsx';
 import TempWatchList from './TempWatchList.jsx';
 import TempChat from './TempChat.jsx';
+import Profile from '../profile/index.jsx'
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
 const HomeStack = () => {
@@ -43,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
           />
         )
       }}/>
-      <Tab.Screen name="Profile" component={TempProfile} options={{
+      <Tab.Screen name="Profile" component={Profile} options={{
         tabBarIcon: (tabInfo) => (
           <Ionicons
             name="person-circle-outline"
