@@ -5,7 +5,7 @@ import { mockData } from '../sharedComponents/mockData.js';
 
 import tw from 'tailwind-react-native-classnames'
 
-const Recommend = ({route}) => {
+const Recommend = ({route, navigation}) => {
   const [rec, setRec] = useState([]);
   const { selected } = route.params
   const { leagues } = mockData;
