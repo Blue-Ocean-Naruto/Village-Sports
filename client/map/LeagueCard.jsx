@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const styles = StyleSheet.create({
   card: {
@@ -21,25 +21,49 @@ const styles = StyleSheet.create({
   logo: {
     width: 66,
     height: 58,
-    left: 0,
+    marginRight: 8,
+    borderRadius: 5,
+  },
+  textContainer: {
+    width: '60%',
   },
   text: {
     fontSize: 10,
   },
+  header: {
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  button: {
+    height: 30,
+    width: 30,
+  },
 });
 
-function LeagueCard({ currentLeague }) {
+function LeagueCard({ navigation, currentLeague }) {
   return (
     <View style={styles.card}>
       <Image style={styles.logo} source={{
-          uri: currentLeague.logo,
+          uri: currentLeague.picture,
         }}
       />
-      <View>
-        <Text style={styles.text}>League: {currentLeague.name}</Text>
-        <Text style={styles.text}>Type: {currentLeague.sport}</Text>
-        <Text style={styles.text}>Address: {currentLeague.address}</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>
+          <Text style={styles.header}>League: </Text>
+          {currentLeague.name}
+        </Text>
+        <Text style={styles.text}>
+          <Text style={styles.header}>Type: </Text>
+          {currentLeague.sport}
+        </Text>
+        <Text style={styles.text}>
+          <Text style={styles.header}>Address: </Text>
+          {currentLeague.address}
+        </Text>
       </View>
+      <TouchableOpacity style={styles.button} onPress={() => (navigation.navigate('HomeScreen'))}>
+        <Text style={styles.text}>More details</Text>
+      </TouchableOpacity>
     </View>
   );
 }

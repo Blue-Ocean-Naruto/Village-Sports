@@ -14,9 +14,9 @@ export default function Home({ navigation }) {
       </ScrollView>
       <Text style={styles.myLeagues}>Announcements</Text>
       <Pressable style={styles.button} onPress={() =>
-          navigation.navigate('Discover')
+          navigation.navigate('map')
       }>
-        <Text style={styles.discover}>Discover</Text>
+        <Text style={styles.discover}>Map</Text>
       </Pressable>
     </LinearView>
   )

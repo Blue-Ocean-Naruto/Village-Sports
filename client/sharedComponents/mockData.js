@@ -3,9 +3,10 @@ exports.mockData = {
     {
       id: 18900,
       name: 'Golden Gate Premier League',
+      address: 'Golden Gate Bridge, San Francisco, CA',
       location: {
-        latitude: 37.76680000000000,
-        longitude: -122.45630000000000
+        latitude: 37.7579909751779,
+        longitude: -122.42724888291282,
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615315/soccer_oj8ssf.webp',
       sport: 'Football',
@@ -40,9 +41,10 @@ exports.mockData = {
     {
       id: 298,
       name: 'South Bay Hockey League',
+      address: '2200 Jefferson St, Torrance, CA 90501',
       location: {
-        latitude: 37.764050000000000,
-        longitude: -122.472520000000000
+        latitude: 33.82695602555889,
+        longitude: -118.32294686075468,
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615396/hockey_r9nk4b.jpg',
       sport: 'Hockey',
@@ -71,9 +73,10 @@ exports.mockData = {
     {
       id: 3,
       name: 'Elite eSports League (EEL)',
+      address: '12655 Ventura Blvd, Studio City, CA 91604',
       location: {
-        latitude: 37.764050000000000,
-        longitude: -122.472520000000000
+        latitude: 34.144660720008844,
+        longitude: -118.40868310122428,
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615478/lol_w8emw7.jpg',
       sport: 'Video Games',
@@ -108,9 +111,10 @@ exports.mockData = {
     {
       id: 49572,
       name: 'NorCal Tennis',
+      address: '1920 N Loop Rd, Alameda, CA 94502',
       location: {
-        latitude: 37.42390000000000,
-        longitude: -122.08280000000000
+        latitude: 37.432651143406794,
+        longitude: -122.14180448244987,
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615707/tennis_ery9mr.webp',
       sport: 'Tennis',
@@ -151,9 +155,10 @@ exports.mockData = {
     {
       id: 52311,
       name: 'Oakland FA',
+      address: '2140 Mandela Parkway, Oakland, CA 94607',
       location: {
-        latitude: 37.80440000000000,
-        longitude: -122.27110000000000
+        latitude: 37.81169156434982,
+        longitude: -122.2929067909725,
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686616401/americanFootball_y06lvt.webp',
       sport: 'American Football',
@@ -182,9 +187,10 @@ exports.mockData = {
     {
       id: 934122,
       name: 'San Jose Ballers',
+      address: '1841 Platinum Ct, San Jose, CA 95116',
       location: {
-        latitude: 37.33620000000000,
-        longitude: -121.89060000000000
+        latitude: 37.358331911685625,
+        longitude: -121.85395355146453,
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686616893/basketball_ovtupl.jpg',
       sport: 'Basketball',

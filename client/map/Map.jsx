@@ -5,33 +5,9 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 import CustomMarker from './CustomMarker.jsx';
 import LeagueCard from './LeagueCard.jsx';
+import { mockData } from '../sharedComponents/mockData.js';
 
-const sampleLeagues = [
-  {
-    id: 1,
-    name: 'NorCal Tennis',
-    address: '1920 N Loop Rd, Alameda, CA 94502',
-    logo: 'https://i.ibb.co/VNrMfDs/istockphoto-1206838436-2048x2048.jpg',
-    location: {
-      latitude: 37.432651143406794,
-      longitude: -122.14180448244987,
-    },
-    sport: 'Tennis',
-  },
-  {
-    id: 2,
-    name: 'Golden Gate Premier League',
-    address: 'Golden Gate Bridge, San Francisco, CA',
-    logo: 'https://i.ibb.co/Jk5VNqm/football-logos-2023-design-template-ba96ccb6c8645a69c9eef50607d84d34-screen.jpg',
-    location: {
-      latitude: 37.7579909751779,
-      longitude: -122.42724888291282,
-    },
-    sport: 'Football',
-  },
-];
-
-export default function LeagueMap() {
+export default function LeagueMap({ navigation }) {
   const [displayID, setDisplayID] = useState('');
   const [location, setLocation] = useState({
     // latitude: 37.6052256618502,
@@ -41,9 +17,9 @@ export default function LeagueMap() {
   });
 
   function findCurrentLeague(currentID) {
-    for (let i = 0; i < sampleLeagues.length; i++) {
-      if (sampleLeagues[i].id === currentID) {
-        return sampleLeagues[i];
+    for (let i = 0; i < mockData.leagues.length; i++) {
+      if (mockData.leagues[i].id === currentID) {
+        return mockData.leagues[i];
       }
     }
     return '';
@@ -80,7 +56,7 @@ export default function LeagueMap() {
           longitudeDelta: 1,
         }}
       >
-        {sampleLeagues.map((league) => (
+        {mockData.leagues.map((league) => (
           <CustomMarker
             key={league.id}
             league={league}
@@ -89,7 +65,7 @@ export default function LeagueMap() {
           />
         ))}
       </MapView>
-      {currentLeague ? <LeagueCard currentLeague={currentLeague} /> : null}
+      {currentLeague ? <LeagueCard currentLeague={currentLeague} navigation={navigation} /> : null}
     </View>
   );
 }
