@@ -4,8 +4,17 @@ import LinearView from '../sharedComponents/LinearView.jsx';
 import { mockData } from '../sharedComponents/mockData.js';
 
 import LeagueCard from './LeagueCard.jsx';
+import Announcements from './Announcements.jsx';
+
+const announcements = mockData.leagues.map((league) => (
+  {
+    teamName: league.teams[0].name,
+    announcements: league.teams[0].announcements
+  }
+));
 
 export default function Home({ navigation }) {
+
   return (
     <LinearView>
       <Text style={styles.myLeagues}>My Leagues</Text>
@@ -13,6 +22,9 @@ export default function Home({ navigation }) {
         {mockData.leagues.map((league => <LeagueCard league={league} key={league.id}/>))}
       </ScrollView>
       <Text style={styles.myLeagues}>Announcements</Text>
+      <ScrollView style={styles.announcementContainer}>
+        {announcements.map((announcement, i) => <Announcements leagueName={announcement.teamName} announceList={announcement.announcements} key={i}/>)}
+      </ScrollView>
       <Pressable style={styles.button} onPress={() =>
           navigation.navigate('Discover')
       }>
@@ -26,7 +38,8 @@ const styles = StyleSheet.create({
   myLeagues: {
     color: '#CEB992',
     fontSize: 16,
-    marginTop: 20,
+    fontWeight: 'bold',
+    marginTop: 15,
     marginBottom: 5,
     alignSelf: 'center'
   },
@@ -43,6 +56,14 @@ const styles = StyleSheet.create({
      marginBottom: 20,
      marginLeft: 100,
      marginRight: 100
+  },
+  announcementContainer: {
+    backgroundColor: '#00000050',
+    marginTop: 15,
+    marginBottom: 15,
+    borderRadius: 10,
+    padding: 5,
+    height: 150
   },
   discover: {
     color: 'white',
