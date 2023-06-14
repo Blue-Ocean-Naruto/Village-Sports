@@ -38,11 +38,11 @@ export default function App() {
             <>
               <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
               <Stack.Screen name="map" component={LeagueMap} options={({ navigation }) => (
-          {
-            headerTitle: NavStackHeader,
-            headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 },
-            headerLeft: () => (<HeaderBackButton tintColor="white" onPress={() => (navigation.goBack())}/>)
-          })}/>
+                {
+                  headerTitle: NavStackHeader,
+                  headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 },
+                  headerLeft: () => (<HeaderBackButton tintColor="white" onPress={() => (navigation.goBack())}/>)
+                })}/>
               <Stack.Screen name="Discover" component={Discover} />
               <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
               <Stack.Screen name="chat" component={ChatSelection} />
@@ -50,8 +50,8 @@ export default function App() {
             </>
           )
         }
-      </Stack.Navigator >
-    </NavigationContainer >
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
