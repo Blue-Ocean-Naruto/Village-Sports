@@ -14,8 +14,8 @@ import Discover from './client/discover/index.jsx';
 import Recommend from './client/discover/Recommend.jsx';
 import NavStackHeader from './client/sharedComponents/NavStackHeader.jsx';
 import LeagueMap from './client/map/Map.jsx';
-import ChatSelection from './client/Chat/index.jsx'
-import ChatRoom from './client/Chat/ChatRoom.jsx'
+import ChatSelection from './client/Chat/index.jsx';
+import ChatRoom from './client/Chat/ChatRoom.jsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +27,7 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="map" component={LeagueMap} />
+        <Stack.Screen name="map" component={LeagueMap} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
         <Stack.Screen name="Discover" component={Discover} />
         <Stack.Screen name="Recommend" component={Recommend} />
         <Stack.Screen name="chat" component={ChatSelection} />

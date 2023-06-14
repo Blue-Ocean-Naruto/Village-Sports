@@ -11,7 +11,6 @@ npm-debug.*
 web-build/
 package-lock.json
 
-package-lock.json
 
 # macOS
 .DS_Store
@@ -20,5 +19,3 @@ package-lock.json
 .metro-health-check*
 
 .eslintrc.js
-
-package-lock.json

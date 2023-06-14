@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     bottom: 35,
     borderWidth: 1,
-    borderColor: '#7BA05B',
+    borderColor: '#272838',
     borderRadius: 5,
     width: '90%',
     height: '15%',
@@ -35,8 +35,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   button: {
-    height: 30,
-    width: 30,
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    height: 20,
+    width: 80,
+    borderWidth: 1,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 10,
+    color: '#3457D5',
   },
 });
 
@@ -62,7 +73,7 @@ function LeagueCard({ navigation, currentLeague }) {
         </Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={() => (navigation.navigate('HomeScreen'))}>
-        <Text style={styles.text}>More details</Text>
+        <Text style={styles.buttonText}>More details</Text>
       </TouchableOpacity>
     </View>
   );
