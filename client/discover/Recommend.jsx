@@ -20,24 +20,23 @@ const Recommend = ({route, navigation}) => {
   return (
     <LinearGradient style={[styles.gradient]} colors={["#272838", "rgba(206, 185, 146, 0.35)"]}>
       <SafeAreaView style={styles.container}>
-        <View style={[tw`flex flex-col items-center my-1 h-1/3`]}>
-          {rec.slice(0,3).map(league => (
-            <TouchableOpacity key={league.id} onPress={() => navigation.navigate('League', {league: league})} style={[tw`flex flex-col border border-gray-500 p-2 w-5/6 rounded-lg my-1`]}>
-              <Text style={[tw`text-xl text-white`]}>
-                {league.name}
-              </Text>
-              <Text style={[tw`self-start bg-gray-300 my-1 p-1 rounded-lg`, {width: 'auto'}]}>
-                {league.sport}
-              </Text>
-              <Image style={[tw`self-center h-2/3 w-5/6`]} source={{uri: league.picture}}/>
-            </TouchableOpacity>
-          ))}
-          <Button
-            title="Map View"
-            onPress={() =>
-              navigation.navigate('map', {rec: rec})
-            }
-            />
+        <View style={[tw`flex flex-col flex-1 justify-between`]}>
+          <View style={[tw`h-1/4`]}>
+            {rec.slice(0,3).map(league => (
+              <TouchableOpacity key={league.id} onPress={() => navigation.navigate('League', {league: league})} style={[{borderRadius: 10}, tw`flex flex-col self-center border border-gray-500 p-2 w-5/6 my-1`]}>
+                <Text style={[tw`text-xl text-white`]}>
+                  {league.name}
+                </Text>
+                <Text style={[{borderRadius: 8}, styles.goldBackground, tw`self-start my-1 p-1`, {width: 'auto'}]}>
+                  {league.sport}
+                </Text>
+                <Image style={[tw`self-center h-2/3 w-5/6 mb-5`]} source={{uri: league.picture}}/>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('map', {rec: rec})} style={[styles.button]}>
+            <Text style={[tw`self-center text-white`]}>Map View</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -53,6 +52,18 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 15,
   },
+  goldBackground: {
+    backgroundColor: '#CEB992',
+  },
+  button: {
+    backgroundColor: '#73937E',
+    borderRadius: 20,
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 20,
+    marginLeft: 100,
+    marginRight: 100
+ },
 })
 
 export default Recommend
