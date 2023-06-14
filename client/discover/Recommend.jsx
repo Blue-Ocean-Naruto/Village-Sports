@@ -22,7 +22,7 @@ const Recommend = ({route, navigation}) => {
       <SafeAreaView style={styles.container}>
         <View style={[tw`flex flex-col items-center my-1 h-1/3`]}>
           {rec.slice(0,3).map(league => (
-            <TouchableOpacity key={league.id} style={[tw`flex flex-col border border-gray-500 p-2 w-5/6 rounded-lg my-1`]}>
+            <TouchableOpacity key={league.id} onPress={() => navigation.navigate('League', {league: league})} style={[tw`flex flex-col border border-gray-500 p-2 w-5/6 rounded-lg my-1`]}>
               <Text style={[tw`text-xl text-white`]}>
                 {league.name}
               </Text>
