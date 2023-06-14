@@ -7,7 +7,7 @@ import CustomMarker from './CustomMarker.jsx';
 import LeagueCard from './LeagueCard.jsx';
 import { mockData } from '../sharedComponents/mockData.js';
 
-export default function LeagueMap({ navigation }) {
+export default function LeagueMap({ navigation, route }) {
   const [displayID, setDisplayID] = useState('');
   const [location, setLocation] = useState({
     // latitude: 37.6052256618502,
@@ -16,10 +16,12 @@ export default function LeagueMap({ navigation }) {
     longitude: -109.695925503991,
   });
 
+  const { rec } = route.params;
+
   function findCurrentLeague(currentID) {
-    for (let i = 0; i < mockData.leagues.length; i++) {
-      if (mockData.leagues[i].id === currentID) {
-        return mockData.leagues[i];
+    for (let i = 0; i < rec.length; i++) {
+      if (rec[i].id === currentID) {
+        return rec[i];
       }
     }
     return '';
@@ -56,7 +58,7 @@ export default function LeagueMap({ navigation }) {
           longitudeDelta: 1,
         }}
       >
-        {mockData.leagues.map((league) => (
+        {rec.map((league) => (
           <CustomMarker
             key={league.id}
             league={league}

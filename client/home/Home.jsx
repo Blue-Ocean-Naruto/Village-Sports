@@ -26,9 +26,9 @@ export default function Home({ navigation }) {
         {announcements.map((announcement, i) => <Announcements leagueName={announcement.teamName} announceList={announcement.announcements} key={i}/>)}
       </ScrollView>
       <Pressable style={styles.button} onPress={() =>
-          navigation.navigate('map')
+          navigation.navigate('Discover')
       }>
-        <Text style={styles.discover}>Map</Text>
+        <Text style={styles.discover}>Discover</Text>
       </Pressable>
     </LinearView>
   )

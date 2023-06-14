@@ -22,7 +22,6 @@ import ChatRoom from './client/Chat/ChatRoom.jsx';
 
 const Stack = createNativeStackNavigator();
 
-
 export default function App() {
 
   return (
