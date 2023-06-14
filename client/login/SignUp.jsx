@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   // discoverContainer: {
 
 
-  },
+  // },
   discoverButton: {
     backgroundColor: '#73937E',
     paddingHorizontal: 15,
