@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 200,
     width: 150,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: '#D9D9D918',
     marginRight: 7
   },
   leagueName: {

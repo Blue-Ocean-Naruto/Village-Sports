@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecorationLine: 'underline'
   },
+
   discoverContainer: {
 
   },

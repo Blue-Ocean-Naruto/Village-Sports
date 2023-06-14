@@ -18,11 +18,12 @@ export default function NavStackHeader () {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Image
+        {/* <Image
           style={styles.image}
           source={require('../../assets/VillageSportsLogo.png')}
           contentFit='contain'
-        />
+        /> */}
+        <Text>Village Sports</Text>
       </View>
     </SafeAreaView>
   );
