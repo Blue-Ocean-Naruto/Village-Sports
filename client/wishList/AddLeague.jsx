@@ -5,11 +5,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export default function AddLeague({ navigation, setWishList }) {
   return (
     <View style={styles.container}>
-      <Text>Not ready to commit? Save some leagues for later.</Text>
-      <Text>Discover Leagues in your Village</Text>
+      <Text style={styles.text}>Not ready to commit?</Text>
+      <Text style={styles.text}>Save some leagues for later.</Text>
       <View style={styles.card}>
         <Pressable style={styles.button} onPress={() => navigation.navigate('Discover')}>
-          <Ionicons name="add" size={70} color={'#272838'}/>
+          <Ionicons name="add" size={70} color={'#FFFFFF75'} style={{alignSelf: 'center'}}/>
           <Text style={styles.addLeague}>Add League</Text>
         </Pressable>
       </View>
@@ -26,8 +26,15 @@ const styles = StyleSheet.create({
   card: {
     width: '50%'
   },
+  text: {
+    color: '#CEB992',
+    alignSelf: 'center',
+    textAlign: 'center',
+    marginBottom: 10,
+    fontSize: 18
+  },
   button: {
-    backgroundColor: '#FFFFFF50',
+    backgroundColor: '#D9D9D918',
     borderRadius: 10,
     padding: 10,
     marginTop: 15,
@@ -36,6 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   addLeague: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    color: '#FFF'
   }
 })

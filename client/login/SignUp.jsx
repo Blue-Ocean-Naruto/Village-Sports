@@ -161,17 +161,15 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline'
   },
   // discoverContainer: {
-
-
-  },
-  discoverButton: {
-    backgroundColor: '#73937E',
-    paddingHorizontal: 15,
-    paddingVertical: 7,
-    borderRadius: 10,
-    marginTop: 40,
-//    minWidth: '50%',
-  },
-  discoverText: {
-    textAlign: 'center',
-  }
+    discoverButton: {
+      backgroundColor: '#73937E',
+      paddingHorizontal: 15,
+      paddingVertical: 7,
+      borderRadius: 10,
+      marginTop: 40,
+  //    minWidth: '50%',
+    },
+    discoverText: {
+      textAlign: 'center'
+    }
+  });
