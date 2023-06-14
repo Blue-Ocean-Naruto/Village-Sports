@@ -290,8 +290,29 @@ exports.mockData = {
   userProfiles: [
     {
       id: 0,
-      username: '',
-      teams: []
+      username: "Naruto_Uzamaki",
+      profile_pic: "https://images.unsplash.com/photo-1625420044033-256d145f1648?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      teams: {'San Jose Ballers':'Dunk Dynasty 🏀', 'NorCal Tennis':'Volley Vipers 🐍'},
+      wishlist: [18900],
+      info: {
+        about_me:"Hi, I'm naruto, the best of the Best when it comes to being a Ninja who likes Ramen",
+        sobriquet: "That one Kid",
+        interests: "Frogs, Ramen, Social Acceptance, Being a Ninja",
+        level: "Genin"
+      }
+    },
+    {
+      id: 1,
+      username: "Tobi",
+      profile_pic: "https://images.unsplash.com/photo-1606590277088-eeffbe973337?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      teams: {'Elite eSports League (EEL)':'Nebula Nexus (LoL)'},
+      wishlist: [],
+      info: {
+        about_me: "",
+        sobriquet: "Spooky Mask Guy",
+        interests: "Revenge, Famous Dead Warlords, Utopian Social Reform Projects, Capturing the Tailed-Beasts",
+        level: "???"
+      }
     }
   ]
 }
