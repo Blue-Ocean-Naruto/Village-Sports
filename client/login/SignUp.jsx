@@ -162,8 +162,6 @@ const styles = StyleSheet.create({
   },
   // discoverContainer: {
 
-
-  },
   discoverButton: {
     backgroundColor: '#73937E',
     paddingHorizontal: 15,
@@ -175,3 +173,5 @@ const styles = StyleSheet.create({
   discoverText: {
     textAlign: 'center',
   }
+})
+
