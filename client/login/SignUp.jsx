@@ -5,12 +5,10 @@ import { auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigation = useNavigation();
 
   const handleSignUp = () => {
     auth
@@ -101,9 +99,9 @@ const SignUp = () => {
                 navigation.navigate('Discover');
               }}
             >
-              <Text
+              {/* <Text
                 style={styles.discoverText}
-              >Discover</Text>
+              >Discover</Text> */}
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
@@ -160,18 +158,18 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecorationLine: 'underline'
   },
-  discoverContainer: {
+  // discoverContainer: {
 
-  },
-  discoverButton: {
-    backgroundColor: '#73937E',
-    paddingHorizontal: 15,
-    paddingVertical: 7,
-    borderRadius: 10,
-    marginTop: 40,
-    minWidth: '50%',
-  },
-  discoverText: {
-    textAlign: 'center',
-  }
+  // },
+  // discoverButton: {
+  //   backgroundColor: '#73937E',
+  //   paddingHorizontal: 15,
+  //   paddingVertical: 7,
+  //   borderRadius: 10,
+  //   marginTop: 40,
+  //   minWidth: '50%',
+  // },
+  // discoverText: {
+  //   textAlign: 'center',
+  // }
 });
