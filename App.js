@@ -1,52 +1,40 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './client/home/index.jsx';
-import LogIn from './client/login/index.jsx';
+import Login from './client/login/Login.jsx';
+import SignUp from './client/login/SignUp.jsx';
+
+import HomeScreen from './client/home/HomeScreen.jsx';
 import Discover from './client/discover/index.jsx';
 import League from './client/league/index.jsx';
+import Recommend from './client/discover/Recommend.jsx';
+import NavStackHeader from './client/sharedComponents/NavStackHeader.jsx';
+import LeagueMap from './client/map/Map.jsx';
+import ChatSelection from './client/Chat/index.jsx'
+import ChatRoom1 from './client/Chat/ChatRoom.jsx'
 
 const Stack = createNativeStackNavigator();
 
-// const HomeScreen = ({navigation}) => {
-//   return (
-//     <Button
-//       title="Go to Jane's profile"
-//       onPress={() =>
-//         navigation.navigate('Profile', {name: 'Jane'})
-//       }
-//     />
-//   );
-// };
-// const ProfileScreen = ({navigation, route}) => {
-//   return <Text>This is {route.params.name}'s profile</Text>;
-// };
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="login" component={LogIn} /> */}
-        {/* Stack all components below */}
-        {/* <Stack.Screen name="Discover" component={Discover} /> */}
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+        <Stack.Screen name="Discover" component={Discover} />
+        <Stack.Screen name="Recommend" component={Recommend} />
+        <Stack.Screen name="chat" component={ChatSelection} />
+        <Stack.Screen name="chatRoom" component={ChatRoom1} />
         <Stack.Screen name="League" component={League} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
