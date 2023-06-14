@@ -11,7 +11,7 @@ const Recommend = ({route, navigation}) => {
   const { leagues } = mockData;
 
   useEffect(() => {
-    const filteredLeagues = leagues.filter(league =>..
+    const filteredLeagues = leagues.filter(league =>
       selected.includes(league.sport)
     )
     setRec(filteredLeagues)
