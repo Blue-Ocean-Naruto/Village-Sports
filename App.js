@@ -10,6 +10,8 @@ import { HeaderBackButton } from '@react-navigation/elements';
 
 import Login from './client/login/Login.jsx';
 import SignUp from './client/login/SignUp.jsx';
+import DiscoverDemo from './client/login/discoverDemo/indexDemo.jsx';
+import RecommendDemo from './client/login/discoverDemo/RecommendDemo.jsx';
 
 import HomeScreen from './client/home/HomeScreen.jsx';
 import Discover from './client/discover/index.jsx';
@@ -33,6 +35,8 @@ export default function App() {
             <>
               <Stack.Screen name="Login" component={Login} initialParams={{ login: setIsSignedIn }} options={{ headerShown: false }} />
               <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+              <Stack.Screen name="Discover" component={DiscoverDemo} options={{ headerShown: false }} />
+              <Stack.Screen name="Recommend" component={RecommendDemo} options={{ headerShown: false }} />
             </>
           ) : (
             <>
