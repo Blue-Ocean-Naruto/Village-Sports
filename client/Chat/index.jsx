@@ -16,16 +16,30 @@ const ChatSelection = ({ navigation }) => {
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              navigation.navigate('chatRoom', { roomName: 'room1' });
+              navigation.navigate('chatRoom', { roomName: 'Softball League' });
             }}>
-            <Text style={styles.buttonText}>Softball League</Text>
+            <Text style={styles.leagueButtonText}>Softball League</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.teamButtonContainer}
+            onPress={() => {
+              navigation.navigate('chatRoom', { roomName: 'The Hardballs' });
+            }}>
+            <Text style={styles.buttonText}>The Hardballs</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              navigation.navigate('chatRoom', { roomName: 'room2' });
+              navigation.navigate('chatRoom', { roomName: 'LCS' });
             }}>
-            <Text style={styles.buttonText}>Chat Room Two</Text>
+            <Text style={styles.leagueButtonText}>LCS</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.teamButtonContainer}
+            onPress={() => {
+              navigation.navigate('chatRoom', { roomName: 'TSM' });
+            }}>
+            <Text style={styles.buttonText}>TSM</Text>
           </TouchableOpacity>
         </View>
       </LinearView>
@@ -42,15 +56,28 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     borderWidth: 1,
-    backgroundColor: '#575552',  // Button background color
+    backgroundColor: '#CFBA93',  // Button background color
     borderRadius: 5,
     overflow: 'hidden',
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginBottom: 10,
   },
+  teamButtonContainer: {
+    borderWidth: 1,
+    backgroundColor: '#575552',  // Button background color
+    borderRadius: 5,
+    overflow: 'hidden',
+    marginLeft: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginBottom: 10,
+  },
   buttonText: {
     color: 'white',  // Button text color
+    fontSize: 16,
+  },
+  leagueButtonText: {
     fontSize: 16,
   },
   title: {

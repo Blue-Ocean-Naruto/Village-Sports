@@ -22,7 +22,7 @@ const RenderInterest = ({ interest, selected, setSelected}) => {
       {show &&
         interest.items.map((item) => (
           <TouchableOpacity key={item} onPress={() => toggleInterest(item)}>
-            <Text style={[tw`bg-gray-300 m-1 p-1 rounded-md ${selected.includes(item) && 'bg-gray-500'}`]}>
+            <Text style={[tw`bg-gray-300 m-1 p-1 ${selected.includes(item) && 'bg-gray-500'}`, { borderRadius: 10 }]}>
               {item}
             </Text>
           </TouchableOpacity>
