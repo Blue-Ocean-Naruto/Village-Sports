@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { auth } from '../../firebase';
+import { db, auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
 
@@ -13,12 +13,21 @@ const SignUp = ({ navigation }) => {
   const handleSignUp = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('new user made', user);
-        // put in logic that stores username and email in a table.
+      .then(() => {
+
+        db.collection('usernames').doc('usertables').set({ username, email })
+          .then(() => {
+            console.log('user data saved successfull!');
+          })
+          .catch(err => alert(err.message));
+
+        // db.collection('username').doc('usertables').add({ username, email })
+        //   .then((docRef) => {
+        //     console.log('User data saved successfully with ID: ', docRef,id);
+        //   })
+        //   .catch(err => alert(err.message));
       })
-      .catch(err => alert(err.message))
+      .catch(err => alert(err.message));
   }
 
   return (
@@ -99,9 +108,9 @@ const SignUp = ({ navigation }) => {
                 navigation.navigate('Discover');
               }}
             >
-              {/* <Text
+              <Text
                 style={styles.discoverText}
-              >Discover</Text> */}
+              >Discover</Text>
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
@@ -160,10 +169,9 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecorationLine: 'underline'
   },
-  // discoverContainer: {
+  discoverContainer: {
 
-
-  // },
+  },
   discoverButton: {
     backgroundColor: '#73937E',
     paddingHorizontal: 15,
@@ -175,3 +183,4 @@ const styles = StyleSheet.create({
   discoverText: {
     textAlign: 'center',
   }
+});
