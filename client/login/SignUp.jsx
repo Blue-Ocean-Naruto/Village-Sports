@@ -183,5 +183,5 @@ const styles = StyleSheet.create(
   discoverText: {
     textAlign: 'center',
   }
-});
+}});
 
