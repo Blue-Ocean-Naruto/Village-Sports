@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Button, StyleSheet, SafeAreaView } from 'react-native';
-import RenderInterest from './RenderInterest.jsx'
+import RenderInterest from './RenderInterestDemo.jsx'
 import tw from 'tailwind-react-native-classnames'
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -35,9 +35,12 @@ const Discover = ({navigation}) => {
               <RenderInterest key={interest.id} interest={interest} selected={selected} setSelected={setSelected}/>
               ))}
           </View>
-            <TouchableOpacity style={[styles.button]} onPress={() =>navigation.navigate('Recommend', {selected: selected})}>
-              <Text style={[tw`text-white self-center`]}>Go!</Text>
-            </TouchableOpacity>
+          <Button
+            title="Go!"
+            onPress={() =>
+              navigation.navigate('Recommend', {selected: selected})
+            }
+            />
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -53,18 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 15,
   },
-  goldBackground: {
-    backgroundColor: '#CEB992',
-  },
-  button: {
-    backgroundColor: '#73937E',
-    borderRadius: 20,
-    padding: 10,
-    marginTop: 10,
-    marginBottom: 20,
-    marginLeft: 100,
-    marginRight: 100
- },
 })
 
 export default Discover;

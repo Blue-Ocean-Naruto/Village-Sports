@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
      marginRight: 100
   },
   announcementContainer: {
-    backgroundColor: '#00000050',
+    backgroundColor: '#D9D9D918',
     marginTop: 15,
     marginBottom: 15,
     borderRadius: 10,
