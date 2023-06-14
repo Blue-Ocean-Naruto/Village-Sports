@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { db } from '../../firebase';
 import { collection, query, onSnapshot, orderBy, doc, getDoc, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -8,14 +8,16 @@ const ChatRoom = ({ navigation, route }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
-  var myUserName = 'MyuserName';
+  var myUserName = 'Kisame';
+
+  const scrollViewRef = useRef();
+
   React.useEffect(() => {
     navigation.setOptions({
-      headerTitle: route.params.roomName === 'room1' ? 'Softball League' : 'Chat Room Two',
+      headerTitle: route.params.roomName,
     });
   }, [route.params.roomName]);
   useEffect(() => {
-
     const q = query(collection(db, "Chat Room", roomName, "messages"), orderBy("createdAt")); // Replace "messages" with your collection name
     const unsubscribe = onSnapshot(q, snapshot => {
       let messages = [];
@@ -23,6 +25,9 @@ const ChatRoom = ({ navigation, route }) => {
         messages.push(doc.data());
       });
       setChatMessages(messages);
+      setTimeout(() => {
+        scrollViewRef.current?.scrollToEnd({ animated: false });
+      }, 100);
     });
 
     return () => unsubscribe(); // Unsubscribe to changes when the component unmounts
@@ -32,7 +37,7 @@ const ChatRoom = ({ navigation, route }) => {
     if (message.length > 0) {
       await addDoc(collection(db, "Chat Room", roomName, "messages"), {
         message,
-        user_name: 'MyuserName', // Replace with the actual user name
+        user_name: 'Kisame', // Replace with the actual user name
         createdAt: serverTimestamp(),
       });
       setMessage('');  // Clear the input field after the message is sent
@@ -41,7 +46,7 @@ const ChatRoom = ({ navigation, route }) => {
   return (
     <LinearView>
       <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.chatContainer}>
+        <ScrollView ref={scrollViewRef} contentContainerStyle={styles.chatContainer}>
           {chatMessages.map((chat, index) => {
             if (chat.user_name === myUserName) {
               return (
@@ -64,17 +69,18 @@ const ChatRoom = ({ navigation, route }) => {
             }
           })}
         </ScrollView>
-        <KeyboardAvoidingView behavior="padding" style={styles.inputContainer}>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             value={message}
             onChangeText={setMessage}
             placeholder="Type your message..."
-            placeholderTextColor="#CEB992"
+            placeholderTextColor="#FBE7AB"
             multiline
             autoFocus
           />
-          <Button title="Send" onPress={onSend} color = '#272838'/>
+          <Button title="Send" onPress={onSend} color="#FBE7AB" />
         </KeyboardAvoidingView>
       </View>
     </LinearView>
@@ -98,6 +104,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    color: '#FBE7AB',
     marginRight: 10,
     borderWidth: 1,
     // borderColor: 'gray',
@@ -136,7 +143,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     // borderColor: '#ddd',
     backgroundColor: '#add8e6',  // Light blue background
-    borderRadius: 5,
+    borderRadius: 10,
     padding: 10,
     alignSelf: 'flex-end',
   },
