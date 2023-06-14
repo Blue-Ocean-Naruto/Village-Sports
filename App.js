@@ -11,6 +11,7 @@ import SignUp from './client/login/SignUp.jsx';
 
 import HomeScreen from './client/home/HomeScreen.jsx';
 import Discover from './client/discover/index.jsx';
+import League from './client/league/index.jsx';
 import Recommend from './client/discover/Recommend.jsx';
 import NavStackHeader from './client/sharedComponents/NavStackHeader.jsx';
 import LeagueMap from './client/map/Map.jsx';
