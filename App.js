@@ -6,6 +6,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { HeaderBackButton } from '@react-navigation/elements';
+
 import Login from './client/login/Login.jsx';
 import SignUp from './client/login/SignUp.jsx';
 
@@ -27,7 +29,12 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="map" component={LeagueMap} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+        <Stack.Screen name="map" component={LeagueMap} options={({ navigation }) => (
+          {
+            headerTitle: NavStackHeader,
+            headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 },
+            headerLeft: () => (<HeaderBackButton tintColor="white" onPress={() => (navigation.goBack())}/>)
+          })}/>
         <Stack.Screen name="Discover" component={Discover} />
         <Stack.Screen name="Recommend" component={Recommend} />
         <Stack.Screen name="chat" component={ChatSelection} />
