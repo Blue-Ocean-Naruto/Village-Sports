@@ -8,7 +8,7 @@ const ChatRoom = ({ navigation, route }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
-  var myUserName = 'Kisame';
+  var myUserName = 'Granit Saka';
 
   const scrollViewRef = useRef();
 
@@ -37,7 +37,7 @@ const ChatRoom = ({ navigation, route }) => {
     if (message.length > 0) {
       await addDoc(collection(db, "Chat Room", roomName, "messages"), {
         message,
-        user_name: 'Kisame', // Replace with the actual user name
+        user_name: 'Granit Saka', // Replace with the actual user name
         createdAt: serverTimestamp(),
       });
       setMessage('');  // Clear the input field after the message is sent
