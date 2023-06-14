@@ -23,11 +23,11 @@ const Recommend = ({route, navigation}) => {
         <View style={[tw`flex flex-col flex-1 justify-between`]}>
           <View style={[tw`h-1/4`]}>
             {rec.slice(0,3).map(league => (
-              <TouchableOpacity key={league.id} onPress={() => navigation.navigate('League', {league: league})} style={[{borderRadius: 10}, tw`flex flex-col self-center border border-gray-500 p-2 w-5/6 my-1`]}>
+              <TouchableOpacity key={league.id} onPress={() => navigation.navigate('League', {league: league})} style={[styles.round, tw`self-center border border-gray-500 p-2 w-5/6 my-1`]}>
                 <Text style={[tw`text-xl text-white`]}>
                   {league.name}
                 </Text>
-                <Text style={[{borderRadius: 8}, styles.goldBackground, tw`self-start my-1 p-1`, {width: 'auto'}]}>
+                <Text style={[styles.goldBackground, tw`self-start my-1 p-1`, {width: 'auto'}]}>
                   {league.sport}
                 </Text>
                 <Image style={[tw`self-center h-2/3 w-5/6 mb-5`]} source={{uri: league.picture}}/>
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   },
   goldBackground: {
     backgroundColor: '#CEB992',
+    borderRadius: 10
   },
   button: {
     backgroundColor: '#73937E',
@@ -64,6 +65,9 @@ const styles = StyleSheet.create({
     marginLeft: 100,
     marginRight: 100
  },
+ round: {
+  borderRadius: 10
+ }
 })
 
 export default Recommend

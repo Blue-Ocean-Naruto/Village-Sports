@@ -22,7 +22,7 @@ const RenderInterest = ({ interest, selected, setSelected}) => {
       {show &&
         interest.items.map((item) => (
           <TouchableOpacity key={item} onPress={() => toggleInterest(item)}>
-            <Text style={[styles.goldBackground, {borderRadius: 10}, tw`m-1 p-1 ${selected.includes(item) && 'bg-gray-600'}`]}>
+            <Text style={[styles.goldBackground, tw`m-1 p-1 ${selected.includes(item) && 'bg-gray-600'}`]}>
               {item}
             </Text>
           </TouchableOpacity>
@@ -35,6 +35,7 @@ const RenderInterest = ({ interest, selected, setSelected}) => {
 const styles = StyleSheet.create({
   goldBackground: {
     backgroundColor: '#CEB992',
+    borderRadius:10
   },
 });
 
