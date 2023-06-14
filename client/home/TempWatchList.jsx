@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import LinearView from '../sharedComponents/LinearView.jsx';
 
-export default function TempWatchList() {
+import AddLeague from '../wishList/AddLeague.jsx';
+import LeaguesSaved from '../wishList/LeaguesSaved.jsx';
+
+import { mockData } from '../sharedComponents/mockData.js';
+
+export default function TempWatchList({ navigation }) {
+  // temporarily rendering with a useState. Will implement Firebase and change logic after styling is set
+  const [wishList, setWishList] = useState(mockData);
   return (
-    <View style={styles.container}>
-      <Text>Temp Saved Leagues/Watchlist Screen!</Text>
-    </View>
+    <LinearView>
+      {JSON.stringify(wishList) === '{}' ? <AddLeague navigation={navigation} setWishList={setWishList}/> : <LeaguesSaved navigation={navigation} wishList={wishList}/>}
+    </LinearView>
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
