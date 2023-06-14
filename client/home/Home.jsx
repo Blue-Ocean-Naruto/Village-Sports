@@ -5,6 +5,7 @@ import { mockData } from '../sharedComponents/mockData.js';
 
 import LeagueCard from './LeagueCard.jsx';
 import Announcements from './Announcements.jsx';
+import ProfileButton from '../profile/profileButton.jsx'
 
 const announcements = mockData.leagues.map((league) => (
   {
@@ -21,7 +22,7 @@ export default function Home({ navigation }) {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} bounces={false} style={styles.carousel}>
         {mockData.leagues.map((league => <LeagueCard league={league} key={league.id}/>))}
       </ScrollView>
-      <Text style={styles.myLeagues}>Announcements</Text>
+        <Text style={styles.myLeagues}>Announcements</Text>
       <ScrollView style={styles.announcementContainer}>
         {announcements.map((announcement, i) => <Announcements leagueName={announcement.teamName} announceList={announcement.announcements} key={i}/>)}
       </ScrollView>

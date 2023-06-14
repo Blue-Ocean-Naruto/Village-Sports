@@ -113,8 +113,8 @@ export default SignUp;
 // blocked out because format '80%%' may be crashing my android instance of the app
 
 
-const styles = StyleSheet.create({
-  bigContainer: {
+const styles = StyleSheet.create(
+  {bigContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -160,10 +160,9 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecorationLine: 'underline'
   },
-  // discoverContainer: {
+  discoverContainer: {
 
 
-  },
   discoverButton: {
     backgroundColor: '#73937E',
     paddingHorizontal: 15,
@@ -174,4 +173,4 @@ const styles = StyleSheet.create({
   },
   discoverText: {
     textAlign: 'center',
-  }
+  }}})
