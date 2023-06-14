@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#D9D9D918',
     borderRadius: 10
   },
+  imgContainer: {
+    // backgroundColor: 'blue',
+    height: '200%',
+    borderRadius: 10
+  },
   cardHeader: {
     flex: 1,
     alignContent: 'center',
@@ -68,13 +73,6 @@ const styles = StyleSheet.create({
     padding: 5,
     color: '#FFF'
   },
-  text: {
-    color: '#CEB992',
-    alignSelf: 'center',
-    textAlign: 'center',
-    marginBottom: 10,
-    fontSize: 18
-  },
   button: {
     borderRadius: 10,
     padding: 10,
@@ -82,10 +80,5 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     height: '50%',
     justifyContent: 'flex-start'
-  },
-  imgContainer: {
-    backgroundColor: 'red',
-    height: '200%',
-    borderRadius: 10
   }
 })

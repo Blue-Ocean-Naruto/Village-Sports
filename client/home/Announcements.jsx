@@ -6,7 +6,9 @@ import AnnouncementCard from './AnnouncementCard.jsx';
 export default function Announcements({leagueName, announceList}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.leagueName}>{leagueName}</Text>
+      <View style={styles.nameBar}>
+        <Text style={styles.leagueName}>{leagueName}</Text>
+      </View>
       {announceList.map((announcement) => <AnnouncementCard announcement={announcement} key={announcement.id}/>)}
     </View>
   )
@@ -22,11 +24,15 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   leagueName: {
-    color: 'white',
-    backgroundColor: '#272838',
-    padding: 12,
-    fontSize: 14,
+    color: '#CEB992',
+    padding: 5,
+    fontSize: 16,
     margin: 10,
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-start',
+  },
+  nameBar: {
+    borderLeftWidth: 4,
+    borderLeftColor: '#DCABDF',
+    marginTop: 10
   }
 })
