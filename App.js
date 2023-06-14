@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
@@ -20,23 +20,31 @@ import ChatRoom from './client/Chat/ChatRoom.jsx'
 
 const Stack = createNativeStackNavigator();
 
-
 export default function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="map" component={LeagueMap} />
-        <Stack.Screen name="Discover" component={Discover} />
-        <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
-        <Stack.Screen name="chat" component={ChatSelection} />
-        <Stack.Screen name="chatRoom" component={ChatRoom} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}, headerTintColor: '#D0BF9F'}}/>
-        <Stack.Screen name="League" component={League} />
-      </Stack.Navigator>
-    </NavigationContainer>
+        {
+          !isSignedIn ? (
+            <>
+              <Stack.Screen name="Login" component={Login} initialParams={{ login: setIsSignedIn }} options={{ headerShown: false }} />
+              <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+              <Stack.Screen name="map" component={LeagueMap} />
+              <Stack.Screen name="Discover" component={Discover} />
+              <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+              <Stack.Screen name="chat" component={ChatSelection} />
+              <Stack.Screen name="chatRoom" component={ChatRoom} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}, headerTintColor: '#D0BF9F'}}/>
+            </>
+          )
+        }
+      </Stack.Navigator >
+    </NavigationContainer >
   );
 };
 
