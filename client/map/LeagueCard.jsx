@@ -72,7 +72,7 @@ function LeagueCard({ navigation, currentLeague }) {
           {currentLeague.address}
         </Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => (navigation.navigate('HomeScreen'))}>
+      <TouchableOpacity style={styles.button} onPress={() => (navigation.navigate('League', { league: currentLeague }))}>
         <Text style={styles.buttonText}>More details</Text>
       </TouchableOpacity>
     </View>
