@@ -3,20 +3,23 @@ import { Text, Button, View } from 'react-native';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import ChatSelection from '../Chat/index.jsx'
+
 import LinearView from '../sharedComponents/LinearView.jsx';
-import LogIn from '../login/Login.jsx';
+
+import Discover from '../discover/index.jsx';
+import ChatSelection from '../Chat/index.jsx'
 import Home from './Home.jsx';
 import TempProfile from './TempProfile.jsx';
 import TempWatchList from './TempWatchList.jsx';
-import TempChat from './TempChat.jsx';
+import Profile from '../profile/index.jsx'
+
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
 const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
-      <Stack.Screen name="Login" component={LogIn} />
+      <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
@@ -43,7 +46,7 @@ const HomeScreen = ({ navigation }) => {
           />
         )
       }}/>
-      <Tab.Screen name="Profile" component={TempProfile} options={{
+      <Tab.Screen name="Profile" component={Profile} options={{
         tabBarIcon: (tabInfo) => (
           <Ionicons
             name="person-circle-outline"

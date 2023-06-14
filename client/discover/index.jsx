@@ -8,7 +8,7 @@ const interests = [
   {
     id: 1,
     category: 'Sports',
-    items: ['Football', 'American Football', 'Basketball', 'Tennis', 'Baseball', 'Softball', 'Swimming'],
+    items: ['Football', 'American Football', 'Basketball', 'Hockey', 'Tennis', 'Baseball', 'Softball', 'Swimming'],
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const Discover = ({navigation}) => {
     <LinearGradient style={[styles.gradient]} colors={["#272838", "rgba(206, 185, 146, 0.35)"]}>
       <SafeAreaView style={styles.container}>
         <View style={[tw`flex flex-col flex-1 justify-between`]}>
-          <View style={[tw`m-2 text-white`]}>
+          <View style={[tw`m-2`]}>
             {interests.map((interest) => (
               <RenderInterest key={interest.id} interest={interest} selected={selected} setSelected={setSelected}/>
               ))}
@@ -38,7 +38,7 @@ const Discover = ({navigation}) => {
           <Button
             title="Go!"
             onPress={() =>
-              navigation.navigate('Recommend')
+              navigation.navigate('Recommend', {selected: selected})
             }
             />
         </View>
