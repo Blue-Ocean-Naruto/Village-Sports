@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import tw from 'tailwind-react-native-classnames'
-
 
 const RenderInterest = ({ interest, selected, setSelected}) => {
   const [show, setShow] = useState(false)
@@ -23,7 +22,7 @@ const RenderInterest = ({ interest, selected, setSelected}) => {
       {show &&
         interest.items.map((item) => (
           <TouchableOpacity key={item} onPress={() => toggleInterest(item)}>
-            <Text style={[tw`bg-gray-300 m-1 p-1 rounded-md ${selected.includes(item) && 'bg-gray-500'}`]}>
+            <Text style={[styles.goldBackground, {borderRadius: 10}, tw`m-1 p-1 ${selected.includes(item) && 'bg-gray-600'}`]}>
               {item}
             </Text>
           </TouchableOpacity>
@@ -32,5 +31,11 @@ const RenderInterest = ({ interest, selected, setSelected}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  goldBackground: {
+    backgroundColor: '#CEB992',
+  },
+});
 
 export default RenderInterest
