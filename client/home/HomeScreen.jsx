@@ -8,20 +8,30 @@ import LinearView from '../sharedComponents/LinearView.jsx';
 import Discover from '../discover/index.jsx';
 import ChatSelection from '../Chat/index.jsx'
 import Home from './Home.jsx';
-import TempProfile from './TempProfile.jsx';
 import TempWatchList from './TempWatchList.jsx';
 import Profile from '../profile/index.jsx'
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
+
 const HomeStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
       <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
+
+const WishListStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="WishList" component={TempWatchList} options={{ headerShown: false }} />
+      <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+}
+
 const HomeScreen = ({ navigation }) => {
   return (
     <Tab.Navigator screenOptions={{
@@ -54,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
           />
         )
       }}/>
-      <Tab.Screen name="Saved" component={TempWatchList} options={{
+      <Tab.Screen name="Saved" component={WishListStack} options={{
         tabBarIcon: (tabInfo) => (
           <Ionicons
             name="bookmark-outline"
