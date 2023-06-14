@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Image, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
+import { useRoute } from '@react-navigation/native';
 
-const Login = () => {
+const Login = ({navigation, route}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigation = useNavigation();
+  const { login } = route.params;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.navigate('HomeScreen'); // change to 'Home' later
-        // input logic that gets the username through the input email and shares it with the rest of app
+        login(true);
       }
     })
     return unsubscribe;
@@ -32,70 +32,77 @@ const Login = () => {
 
   return (
     <LinearView>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior="padding"
-      >
-        {/* <View>
-          <Image
-            style={styles.logo}
-            source={Logo}
-          />
-        </View> */}
-        <View
-          style={styles.inputContainer}
+      <View style={styles.bigContainer}>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
         >
-          <TextInput
-            placeholder="Email Address"
-            placeholderTextColor="white"
-            value={email}
-            onChangeText={text => setEmail(text)}
-            style={styles.input}
-          />
-          <TextInput
-            placeholder="Password"
-            placeholderTextColor="white"
-            value={password}
-            onChangeText={text => setPassword(text)}
-            style={styles.input}
-            secureTextEntry
-          />
-        </View>
+          <View>
+            <Image
+              style={styles.logo}
+              source={Logo}
+            />
+          </View>
+          <View
+            style={styles.inputContainer}
+          >
+            <TextInput
+              placeholder="Email Address"
+              placeholderTextColor="white"
+              value={email}
+              onChangeText={text => setEmail(text)}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Password"
+              placeholderTextColor="white"
+              value={password}
+              onChangeText={text => setPassword(text)}
+              style={styles.input}
+              secureTextEntry
+            />
+          </View>
 
-        <View>
-          <TouchableOpacity
-            onPress={handleLogin}
-            style={styles.loginButton}
+          <View>
+            <TouchableOpacity
+              onPress={handleLogin}
+              style={styles.loginButton}
+            >
+              <Text
+                style={styles.loginText}
+              >Login</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={styles.signUpContainer}
           >
             <Text
-              style={styles.loginText}
-            >Login</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View
-          style={styles.signUpContainer}
-        >
-          <Text
-            style={styles.signUpText}
-          >Don't have an account? </Text>
-          <TouchableOpacity
-            onPress={e => {
-              navigation.navigate('SignUp');
-            }}
-          >
-            <Text
-              style={styles.goToSignUp}
-            >Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
+              style={styles.signUpText}
+            >Don't have an account? </Text>
+            <TouchableOpacity
+              onPress={e => {
+                navigation.navigate('SignUp');
+              }}
+            >
+              <Text
+                style={styles.goToSignUp}
+              >Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        </KeyboardAvoidingView>
+      </View>
     </LinearView>
   );
 };
 export default Login;
 
 const styles = StyleSheet.create({
+  bigContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -103,10 +110,8 @@ const styles = StyleSheet.create({
 //    width: '80%%'
   },
   logo: {
-
-  },
-  inputContainer: {
-
+    width: 200,
+    height: 200,
   },
   input: {
     backgroundColor: '#FFFFFF30',

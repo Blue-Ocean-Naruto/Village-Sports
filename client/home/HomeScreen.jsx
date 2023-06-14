@@ -3,6 +3,7 @@ import { Text, Button, View } from 'react-native';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from '@expo/vector-icons/Ionicons';
+
 import LinearView from '../sharedComponents/LinearView.jsx';
 
 import Discover from '../discover/index.jsx';
@@ -18,7 +19,7 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
-      <Stack.Screen name="Discover" component={Discover} />
+      <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
