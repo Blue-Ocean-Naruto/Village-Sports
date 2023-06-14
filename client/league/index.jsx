@@ -1,12 +1,15 @@
-exports.mockData = {
-  leagues: [
+import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import LeagueView from './view.jsx'
+
+const League = () => {
+  let leagues = [
     {
       id: 18900,
       name: 'Golden Gate Premier League',
-      address: 'Golden Gate Bridge, San Francisco, CA',
       location: {
-        latitude: 37.7579909751779,
-        longitude: -122.42724888291282,
+        latitude: 37.76680000000000,
+        longitude: -122.45630000000000
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615315/soccer_oj8ssf.webp',
       sport: 'Football',
@@ -34,16 +37,6 @@ exports.mockData = {
               date: 'July 6, 2023',
               time: '6:00PM'
             }
-          ],
-          announcements: [
-            {
-              id: 89,
-              text: "Starting in July the Southcourt Fields will be under a landscaping remodel, so we'll be moving our regular practice location to the fields by Kinder Elementary"
-            },
-            {
-              id: 312,
-              text: "We're collecting group buy-ins ($10/person) for the After Scrim Dinner. Get those to the Team Captain by Friday, June 30th"
-            }
           ]
         }
       ]
@@ -51,10 +44,9 @@ exports.mockData = {
     {
       id: 298,
       name: 'South Bay Hockey League',
-      address: '2200 Jefferson St, Torrance, CA 90501',
       location: {
-        latitude: 33.82695602555889,
-        longitude: -118.32294686075468,
+        latitude: 37.764050000000000,
+        longitude: -122.472520000000000
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615396/hockey_r9nk4b.jpg',
       sport: 'Hockey',
@@ -64,12 +56,6 @@ exports.mockData = {
           name: 'Frost Kings 👑',
           members: ['William', 'Matt', 'James', 'Alexander', 'Kelvin'],
           events: [
-            {
-              name: 'Game vs Icebreakers',
-              location: 'Glacier Arena',
-              date: 'June 17, 2023',
-              time: '7:00PM'
-            },
             {
               name: 'Give-and-go Drills',
               location: 'Blizzard Bay Rink',
@@ -82,12 +68,6 @@ exports.mockData = {
               date: 'June 28, 2023',
               time: '3:30PM'
             }
-          ],
-          announcements: [
-            {
-              id: 8,
-              text: "Attention all members of the Frost King hockey team! We are thrilled to announce our upcoming game against the Icebreakers this Saturday, June 17th at 7PM. Our team has been training hard, refining our skills, and strategizing to come out strong and secure the victory. We're ready to showcase our teamwork, determination, and love for the game."
-            }
           ]
         }
       ]
@@ -95,10 +75,9 @@ exports.mockData = {
     {
       id: 3,
       name: 'Elite eSports League (EEL)',
-      address: '12655 Ventura Blvd, Studio City, CA 91604',
       location: {
-        latitude: 34.144660720008844,
-        longitude: -118.40868310122428,
+        latitude: 37.764050000000000,
+        longitude: -122.472520000000000
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615478/lol_w8emw7.jpg',
       sport: 'Video Games',
@@ -126,12 +105,6 @@ exports.mockData = {
               date: 'July 16, 2023',
               time: '9:45PM'
             }
-          ],
-          announcements: [
-            {
-              id: 765,
-              text: "Due to popular demand, we are pleased to announce the formation of our brand-new TFT team, Fortune's Fury. Stay tuned for further updates"
-            }
           ]
         }
       ]
@@ -139,10 +112,9 @@ exports.mockData = {
     {
       id: 49572,
       name: 'NorCal Tennis',
-      address: '1920 N Loop Rd, Alameda, CA 94502',
       location: {
-        latitude: 37.432651143406794,
-        longitude: -122.14180448244987,
+        latitude: 37.42390000000000,
+        longitude: -122.08280000000000
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686615707/tennis_ery9mr.webp',
       sport: 'Tennis',
@@ -176,20 +148,6 @@ exports.mockData = {
               date: 'July 1, 2023',
               time: '1:00PM'
             }
-          ],
-          announcements: [
-            {
-              id: 17,
-              text: "Attention Volley Vipers! We are excited to announce the launch of our new website, where you can find all the latest updates, match schedules, standings, and more. Visit the URL and explore the features to stay connected with our tennis community."
-            },
-            {
-              id: 390,
-              text: "Should we start a tournament bracket for the summer? Let us know in the poll"
-            },
-            {
-              id: 555,
-              text: "Vipers, make sure you are checking the locations for drill practice because we are rotating with other teams in the league"
-            }
           ]
         }
       ]
@@ -197,10 +155,9 @@ exports.mockData = {
     {
       id: 52311,
       name: 'Oakland FA',
-      address: '2140 Mandela Parkway, Oakland, CA 94607',
       location: {
-        latitude: 37.81169156434982,
-        longitude: -122.2929067909725,
+        latitude: 37.80440000000000,
+        longitude: -122.27110000000000
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686616401/americanFootball_y06lvt.webp',
       sport: 'American Football',
@@ -222,16 +179,6 @@ exports.mockData = {
               date: 'June 19, 2023',
               time: '6:45PM'
             }
-          ],
-          announcements: [
-            {
-              id: 42,
-              text: "Tryouts for team quarterback in the August lineup will start NEXT WEEK. Let's go, Rhinos!"
-            },
-            {
-              id: 962,
-              text: "Though not official, Coach is in talks with Jeanine from the varsity cheer squad to have them cheer for us on our next big game 👀"
-            }
           ]
         }
       ]
@@ -239,10 +186,9 @@ exports.mockData = {
     {
       id: 934122,
       name: 'San Jose Ballers',
-      address: '1841 Platinum Ct, San Jose, CA 95116',
       location: {
-        latitude: 37.358331911685625,
-        longitude: -121.85395355146453,
+        latitude: 37.33620000000000,
+        longitude: -121.89060000000000
       },
       picture: 'https://res.cloudinary.com/dnr41r1lq/image/upload/v1686616893/basketball_ovtupl.jpg',
       sport: 'Basketball',
@@ -282,12 +228,6 @@ exports.mockData = {
               date: 'August 17, 2023',
               time: '5:45PM'
             }
-          ],
-          announcements: [
-            {
-              id: 33382,
-              text: "Caleb, you left your water bottle in the locker room. It's in the Lost and Found at the front desk of Alley-Oop Arena"
-            }
           ]
         }
       ]
@@ -298,6 +238,16 @@ exports.mockData = {
       id: 0,
       username: '',
       teams: []
-    }
-  ]
-}
+    },
+  ];
+
+
+  return (
+    <LeagueView leagues={leagues} />
+  );
+};
+
+export default League;
+
+
+
