@@ -39,7 +39,7 @@ export default function App() {
               <Stack.Screen name="Discover" component={Discover} />
               <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
               <Stack.Screen name="chat" component={ChatSelection} />
-              <Stack.Screen name="chatRoom" component={ChatRoom} />
+              <Stack.Screen name="chatRoom" component={ChatRoom} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}, headerTintColor: '#D0BF9F'}}/>
             </>
           )
         }
