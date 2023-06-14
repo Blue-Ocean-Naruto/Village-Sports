@@ -36,12 +36,14 @@ export default function LeagueMap({ navigation, route }) {
           return Location.getCurrentPositionAsync();
         }
       })
-      .then(({ coords }) => {
-        console.log(coords);
-        setLocation({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
+      .then((result) => {
+        if (result) {
+          const { coords } = result;
+          setLocation({
+            latitude: coords.latitude,
+            longitude: coords.longitude,
+          });
+        }
       })
       .catch((err) => (console.log(err)));
   }, []);
