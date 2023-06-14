@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigation = useNavigation();
 
   const handleSignUp = () => {
     auth
@@ -25,104 +23,111 @@ const SignUp = () => {
 
   return (
     <LinearView>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior="padding"
-      >
-        <View>
-          <Image
-            style={styles.logo}
-            source={Logo}
-          />
-        </View>
-
-        <View
-          style={styles.inputContainer}
+      <View style={styles.bigContainer}>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior="padding"
         >
-          <TextInput
-            placeholder="Username"
-            placeholderTextColor="white"
-            value={username}
-            onChangeText={text => setUsername(text)}
-            style={styles.input}
-          />
-          <TextInput
-            placeholder="Email Address"
-            placeholderTextColor="white"
-            value={email}
-            onChangeText={text => setEmail(text)}
-            style={styles.input}
-          />
-          <TextInput
-            placeholder="Password"
-            placeholderTextColor="white"
-            value={password}
-            onChangeText={text => setPassword(text)}
-            style={styles.input}
-            secureTextEntry
-          />
-        </View>
+          <View>
+            <Image
+              style={styles.logo}
+              source={Logo}
+            />
+          </View>
 
-        <View>
-          <TouchableOpacity
-            onPress={handleSignUp}
-            style={styles.signUpButton}
+          <View
+            style={styles.inputContainer}
+          >
+            <TextInput
+              placeholder="Username"
+              placeholderTextColor="white"
+              value={username}
+              onChangeText={text => setUsername(text)}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Email Address"
+              placeholderTextColor="white"
+              value={email}
+              onChangeText={text => setEmail(text)}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Password"
+              placeholderTextColor="white"
+              value={password}
+              onChangeText={text => setPassword(text)}
+              style={styles.input}
+              secureTextEntry
+            />
+          </View>
+
+          <View>
+            <TouchableOpacity
+              onPress={handleSignUp}
+              style={styles.signUpButton}
+            >
+              <Text
+                style={styles.signUpText}
+              >Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={styles.loginContainer}
           >
             <Text
-              style={styles.signUpText}
-            >Sign Up</Text>
-          </TouchableOpacity>
-        </View>
+              style={styles.goTologinText}
+            >Already have an account? </Text>
+            <TouchableOpacity
+              onPress={e => {
+                navigation.navigate('Login');
+              }}
+            >
+              <Text
+                style={styles.goToLogin}
+              >Login</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View
-          style={styles.loginContainer}
-        >
-          <Text
-            style={styles.goTologinText}
-          >Already have an account? </Text>
-          <TouchableOpacity
-            onPress={e => {
-              navigation.navigate('Login');
-            }}
+          <View
+            style={styles.discoverContainer}
           >
-            <Text
-              style={styles.goToLogin}
-            >Login</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View
-          style={styles.discoverContainer}
-        >
-          <TouchableOpacity
-            style={styles.discoverButton}
-            onPress={e => {
-              navigation.navigate('Discover');
-            }}
-          >
-            <Text
-              style={styles.discoverText}
-            >Discover</Text>
-          </TouchableOpacity>
-        </View>
-      </KeyboardAvoidingView>
+            <TouchableOpacity
+              style={styles.discoverButton}
+              onPress={e => {
+                navigation.navigate('Discover');
+              }}
+            >
+              {/* <Text
+                style={styles.discoverText}
+              >Discover</Text> */}
+            </TouchableOpacity>
+          </View>
+        </KeyboardAvoidingView>
+      </View>
     </LinearView>
   );
 };
 export default SignUp;
+// blocked out because format '80%%' may be crashing my android instance of the app
+
 
 const styles = StyleSheet.create({
+  bigContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '80%%'
+//    width: '80%%'
   },
   logo: {
-
-  },
-  inputContainer: {
-
+    width: 200,
+    height: 200,
   },
   input: {
     backgroundColor: '#FFFFFF30',
@@ -130,7 +135,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-    minWidth: '100%',
+//    minWidth: '100%',
     textAlign: 'center',
   },
   signUpButton: {
@@ -139,7 +144,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-    minWidth: '100%',
+//    minWidth: '100%',
   },
   signUpText: {
     textAlign: 'center',
@@ -155,7 +160,8 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecorationLine: 'underline'
   },
-  discoverContainer: {
+  // discoverContainer: {
+
 
   },
   discoverButton: {
@@ -164,9 +170,8 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderRadius: 10,
     marginTop: 40,
-    minWidth: '50%',
+//    minWidth: '50%',
   },
   discoverText: {
     textAlign: 'center',
   }
-});
