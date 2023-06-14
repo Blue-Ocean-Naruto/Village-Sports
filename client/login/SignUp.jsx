@@ -5,27 +5,26 @@ import { db, auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
 
-const SignUp = ({ navigation }) => {
+const SignUp = ({ navigation, route }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { setUser } = route.params;
 
   const handleSignUp = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
-
-        db.collection('usernames').doc('usertables').set({ username, email })
-          .then(() => {
-            console.log('user data saved successfull!');
+        db.collection('usernames').add({
+            email: email,
+            username: username,
           })
-          .catch(err => alert(err.message));
-
-        // db.collection('username').doc('usertables').add({ username, email })
-        //   .then((docRef) => {
-        //     console.log('User data saved successfully with ID: ', docRef,id);
-        //   })
-        //   .catch(err => alert(err.message));
+            .then(() => {
+              setUser(username);
+              console.log('user data saved successfull!');
+            })
+            .catch(err => alert(err.message));
       })
       .catch(err => alert(err.message));
   }
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-//    width: '80%%'
+   width: '80%%'
   },
   logo: {
     width: 200,
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-//    minWidth: '100%',
+   minWidth: '100%',
     textAlign: 'center',
   },
   signUpButton: {
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-//    minWidth: '100%',
+   minWidth: '100%',
   },
   signUpText: {
     textAlign: 'center',
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderRadius: 10,
     marginTop: 40,
-//    minWidth: '50%',
+   minWidth: '50%',
   },
   discoverText: {
     textAlign: 'center',
