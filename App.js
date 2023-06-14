@@ -6,6 +6,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { HeaderBackButton } from '@react-navigation/elements';
+
 import Login from './client/login/Login.jsx';
 import SignUp from './client/login/SignUp.jsx';
 
@@ -15,8 +17,8 @@ import League from './client/league/index.jsx';
 import Recommend from './client/discover/Recommend.jsx';
 import NavStackHeader from './client/sharedComponents/NavStackHeader.jsx';
 import LeagueMap from './client/map/Map.jsx';
-import ChatSelection from './client/Chat/index.jsx'
-import ChatRoom from './client/Chat/ChatRoom.jsx'
+import ChatSelection from './client/Chat/index.jsx';
+import ChatRoom from './client/Chat/ChatRoom.jsx';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +37,12 @@ export default function App() {
           ) : (
             <>
               <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
-              <Stack.Screen name="map" component={LeagueMap} />
+              <Stack.Screen name="map" component={LeagueMap} options={({ navigation }) => (
+                {
+                  headerTitle: NavStackHeader,
+                  headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 },
+                  headerLeft: () => (<HeaderBackButton tintColor="white" onPress={() => (navigation.goBack())}/>)
+                })}/>
               <Stack.Screen name="Discover" component={Discover} />
               <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
               <Stack.Screen name="chat" component={ChatSelection} />
@@ -43,8 +50,8 @@ export default function App() {
             </>
           )
         }
-      </Stack.Navigator >
-    </NavigationContainer >
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
