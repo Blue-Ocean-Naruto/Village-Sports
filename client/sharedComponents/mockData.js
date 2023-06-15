@@ -202,7 +202,7 @@ exports.mockData = {
         {
           id: 11,
           name: 'Nebula Nexus (LoL)',
-          members: ['David', 'Ryan', 'Tyler', 'Chris', 'Thomas', 'Josh'],
+          members: ['David', 'Ryan', 'Tyler', 'Chris', 'Thomas', 'Josh', 'Tobi'],
           events: [
             {
               name: 'NALCS Watch Party',
@@ -273,7 +273,7 @@ exports.mockData = {
         {
           id: 999,
           name: 'Volley Vipers 🐍',
-          members: ['Andrew', 'Angelica', 'Shannon', 'Michael', 'Peter'],
+          members: ['Andrew', 'Angelica', 'Shannon', 'Michael', 'Peter', 'Naruto_Uzumaki'],
           events: [
             {
               name: 'Point Play',
@@ -445,7 +445,7 @@ exports.mockData = {
         {
           id: 22,
           name: 'Dunk Dynasty 🏀',
-          members: ['Milo', 'Max', 'Xavier', 'Caleb', 'Silas', 'Asher'],
+          members: ['Milo', 'Max', 'Xavier', 'Caleb', 'Silas', 'Asher','Naruto_Uzumaki'],
           events: [
             {
               name: 'Shootaround',
