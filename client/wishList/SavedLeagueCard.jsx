@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import TeamList from './TeamList.jsx';
 
 export default function SavedLeagueCard({ navigation, league }) {
+  console.log(league);
   return (
     <View style={styles.card}>
       <ScrollView style={styles.scroll}>
