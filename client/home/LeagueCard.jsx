@@ -6,12 +6,12 @@ export default function LeagueCard({ league }) {
   return (
     <View style={styles.container}>
       <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={styles.leagueName}>{league.name}</Text>
+        <Text style={styles.leagueName}>{league.leagueName}</Text>
       </View>
-      <Text style={styles.teamName}>{league.teams[0].name}</Text>
+      <Text style={styles.teamName}>{league.teamInfo.name}</Text>
 
       <ScrollView style={styles.infoCard}>
-        {league.teams[0].events.map((event, i) => <EventInfo event={event} key={i}/>)}
+        {league.teamInfo.events.map((event, i) => <EventInfo event={event} key={i}/>)}
       </ScrollView>
     </View>
   )

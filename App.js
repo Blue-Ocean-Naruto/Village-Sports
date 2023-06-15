@@ -30,6 +30,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [username, setUsername] = useState(null);
   const [leagues, setLeagues] = useState([]);
+  const [userProfile, setUserProfile] = useState({});
+  const [usersLeagues, setUsersLeagues] = useState([]);
 
   useEffect(() => {
     const tempArr = [];
@@ -46,9 +48,62 @@ export default function App() {
       .catch((err) => (console.log(err)));
   }, []);
 
+// upon receiving a user, set their profile info and get leagues associated with the user
+useEffect(() => {
+  db.collection('mockusers').where('username', '==', username).get()
+    .then((query) => {
+      const doc = query.docs[0];
+      if (!doc.exists) {
+        console.log('Document does not exist');
+      } else {
+        const data = doc.data();
+        setUserProfile(
+          {
+            id: data.id,
+            info: JSON.parse(data.info),
+            profile_pic: data.profile_pic,
+            teams: JSON.parse(data.teams),
+            username: username,
+            wishlist: JSON.parse(data.wishlist)
+          }
+        );
+
+        const teams = JSON.parse(data.teams); // obj with {league: team, league: team...}
+        const userLeagues = Array.from(Object.keys(teams));
+        const userLeaguesAndTeams = [];
+        // grab the league each user is part of out of db, and find the specific team info
+        userLeagues.forEach((leagueName) => {
+          db.collection('mockLeagues').where('name', '==', leagueName).get()
+            .then((query) => {
+              const doc = query.docs[0];
+              if (!doc.exists) {
+                console.log('Document does not exits!')
+              } else {
+                const data = doc.data();
+                const allTeams = data.teams.map((team) => (JSON.parse(team)))
+                allTeams.forEach((team) => {
+                  if (team.name === teams[leagueName]) {
+                    userLeaguesAndTeams.push(
+                      {
+                        leagueName: leagueName,
+                        teamInfo: team
+                      }
+                    )
+                  }
+                });
+                setUsersLeagues(userLeaguesAndTeams);
+              }
+            })
+              .catch((err) => console.log(err));
+        });
+      }
+    })
+      .catch((err) => (console.log(err)));
+}, [username])
+
   return (
 
-    <UsernameContext.Provider value={{username, setUsername, leagues, setLeagues}}>
+    <UsernameContext.Provider value={{username, setUsername, leagues, setLeagues, usersLeagues, usersLeagues}}>
       <NavigationContainer>
         <Stack.Navigator>
           {
@@ -61,7 +116,7 @@ export default function App() {
               </>
             ) : (
               <>
-                <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 } }} />
+                <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 } }}/>
                 <Stack.Screen name="map" component={LeagueMap} options={({ navigation }) => (
                   {
                     headerTitle: NavStackHeader,

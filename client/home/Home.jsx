@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, View, StyleSheet, Pressable, ScrollView } from 'react-native';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import { mockData } from '../sharedComponents/mockData.js';
+import UsernameContext from '../sharedComponents/UsernameContext.jsx';
 
 import LeagueCard from './LeagueCard.jsx';
 import Announcements from './Announcements.jsx';
@@ -14,13 +15,14 @@ const announcements = mockData.leagues.map((league) => (
   }
 ));
 
-export default function Home({ navigation }) {
-
+export default function Home({ navigation, route }) {
+  const { usersLeagues } = useContext(UsernameContext);
+  console.log('USER LEAGUES MADE IT TO HOME ', usersLeagues)
   return (
     <LinearView>
       <Text style={styles.myLeagues}>My Leagues</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} bounces={false} style={styles.carousel}>
-        {mockData.leagues.map((league => <LeagueCard league={league} key={league.id}/>))}
+        {usersLeagues.map((league => <LeagueCard league={league} key={league.id}/>))}
       </ScrollView>
         <Text style={styles.myLeagues}>Announcements</Text>
       <ScrollView style={styles.announcementContainer}>
