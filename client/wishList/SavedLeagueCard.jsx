@@ -7,7 +7,7 @@ export default function SavedLeagueCard({ navigation, league }) {
   return (
     <View style={styles.card}>
       <ScrollView style={styles.scroll}>
-        <Pressable style={styles.button} onPress={() => navigation.navigate('Discover')}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('League', { league })}>
           <View style={styles.buttonHeader}>
             <Ionicons name="bookmark" size={25} color={'#DCABDF'} style={{alignSelf: 'flex-end'}}/>
             <Text style={styles.headerText}>{league.name}</Text>
@@ -23,7 +23,7 @@ export default function SavedLeagueCard({ navigation, league }) {
 const styles = StyleSheet.create({
   card: {
     width: '45%',
-    height: '40%',
+    height: '25%',
     marginLeft: 15,
     marginBottom: 15,
     backgroundColor: '#D9D9D918',
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   headerText: {
     position: 'absolute',
     padding: 5,
+    width: '85%',
     color: '#FFF'
   },
   button: {
