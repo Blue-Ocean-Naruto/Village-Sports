@@ -28,7 +28,7 @@ const WishListStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="WishList" component={TempWatchList} options={{ headerShown: false }} />
-      <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }} />
+      {/* <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }} /> */}
     </Stack.Navigator>
   );
 }
