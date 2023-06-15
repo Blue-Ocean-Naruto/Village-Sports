@@ -48,9 +48,9 @@ export default function App() {
                   headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 },
                   headerLeft: () => (<HeaderBackButton tintColor="white" onPress={() => (navigation.goBack())}/>)
                 })}/>
-              <Stack.Screen name="Discover" component={Discover} />
+              <Stack.Screen name="Discover" component={Discover} options={{headerTitle: '', headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}} />
               <Stack.Screen name="League" component={League} />
-              <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: NavStackHeader, headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
+              <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: '', headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
               <Stack.Screen name="chat" component={ChatSelection} />
               <Stack.Screen name="Profile" component={Profile} initialParams={{ self: username }}/>
               <Stack.Screen name="chatRoom" component={ChatRoom} options={{headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}, headerTintColor: '#D0BF9F'}}/>
