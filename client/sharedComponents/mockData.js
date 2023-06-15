@@ -19,30 +19,32 @@ exports.mockData = {
             {
               name: 'Group Practice',
               location: 'Southcourt Fields',
-              date: 'June 27, 2023',
+              date: 'June 27 2023',
               time: '12:30PM'
             },
             {
               name: 'Scrimmage vs Royal Ravens',
               location: 'Cascade Stadium',
-              date: 'July 6, 2023',
+              date: 'July 6 2023',
               time: '3:00PM'
             },
             {
               name: 'After Scrim Dinner',
               location: "Winger's Wings & Things",
-              date: 'July 6, 2023',
+              date: 'July 6 2023',
               time: '6:00PM'
             }
           ],
           announcements: [
             {
               id: 89,
-              text: "Starting in July the Southcourt Fields will be under a landscaping remodel, so we'll be moving our regular practice location to the fields by Kinder Elementary"
+              text: "Starting in July the Southcourt Fields will be under a landscaping remodel, so we'll be moving our regular practice location to the fields by Kinder Elementary",
+              createdAt: 'Wed, 14 Jun 2023 23:57:54 GMT'
             },
             {
               id: 312,
-              text: "We're collecting group buy-ins ($10/person) for the After Scrim Dinner. Get those to the Team Captain by Friday, June 30th"
+              text: "We're collecting group buy-ins ($10/person) for the After Scrim Dinner. Get those to the Team Captain by Friday, June 30th",
+              createdAt: 'Sun, 11 Jun 2023 00:24:09 GMT'
             }
           ]
         }
@@ -67,26 +69,27 @@ exports.mockData = {
             {
               name: 'Game vs Icebreakers',
               location: 'Glacier Arena',
-              date: 'June 17, 2023',
+              date: 'Sat Jun 17 2023',
               time: '7:00PM'
             },
             {
               name: 'Give-and-go Drills',
               location: 'Blizzard Bay Rink',
-              date: 'June 20, 2023',
+              date: 'Jun 20 2023',
               time: '5:15PM'
             },
             {
               name: 'Open Rink Mingle',
               location: 'Blizzard Bay Rink',
-              date: 'June 28, 2023',
+              date: 'Jun 28 2023',
               time: '3:30PM'
             }
           ],
           announcements: [
             {
               id: 8,
-              text: "Attention all members of the Frost King hockey team! We are thrilled to announce our upcoming game against the Icebreakers this Saturday, June 17th at 7PM. Our team has been training hard, refining our skills, and strategizing to come out strong and secure the victory. We're ready to showcase our teamwork, determination, and love for the game."
+              text: "Attention all members of the Frost King hockey team! We are thrilled to announce our upcoming game against the Icebreakers this Saturday, June 17th at 7PM. Our team has been training hard, refining our skills, and strategizing to come out strong and secure the victory. We're ready to showcase our teamwork, determination, and love for the game.",
+              createdAt: 'Sat, 10 Jun 2023 23:57:54 GMT'
             }
           ]
         }
@@ -130,7 +133,8 @@ exports.mockData = {
           announcements: [
             {
               id: 765,
-              text: "Due to popular demand, we are pleased to announce the formation of our brand-new TFT team, Fortune's Fury. Stay tuned for further updates"
+              text: "Due to popular demand, we are pleased to announce the formation of our brand-new TFT team, Fortune's Fury. Stay tuned for further updates",
+              createdAt: 'Fri, 09 Jun 2023 23:57:54 GMT'
             }
           ]
         }
@@ -155,40 +159,43 @@ exports.mockData = {
             {
               name: 'Point Play',
               location: 'Grand Slam Gardens',
-              date: 'June 12, 2023',
+              date: 'Mon Jun 12 2023',
               time: '12:30PM'
             },
             {
               name: 'Doubles w/Scrim Partner',
               location: 'Spin City Tennis Club',
-              date: 'June 23, 2023',
+              date: 'Fri Jun 23 2023',
               time: '4:45PM'
             },
             {
               name: 'Groundstroke Drills',
               location: "Grand Slam Gardens",
-              date: 'June 29, 2023',
+              date: 'Thu Jun 29 2023',
               time: '2:00PM'
             },
             {
               name: 'Lunch Break!',
               location: "Rec Room Cafe",
-              date: 'July 1, 2023',
+              date: 'Sat Jul 1 2023',
               time: '1:00PM'
             }
           ],
           announcements: [
             {
               id: 17,
-              text: "Attention Volley Vipers! We are excited to announce the launch of our new website, where you can find all the latest updates, match schedules, standings, and more. Visit the URL and explore the features to stay connected with our tennis community."
+              text: "Attention Volley Vipers! We are excited to announce the launch of our new website, where you can find all the latest updates, match schedules, standings, and more. Visit the URL and explore the features to stay connected with our tennis community.",
+              createdAt: 'Mon, 12 Jun 2023 23:57:54 GMT'
             },
             {
               id: 390,
-              text: "Should we start a tournament bracket for the summer? Let us know in the poll"
+              text: "Should we start a tournament bracket for the summer? Let us know in the poll",
+              createdAt: 'Thu, 8 Jun 2023 23:57:54 GMT'
             },
             {
               id: 555,
-              text: "Vipers, make sure you are checking the locations for drill practice because we are rotating with other teams in the league"
+              text: "Vipers, make sure you are checking the locations for drill practice because we are rotating with other teams in the league",
+              createdAt: 'Mon, 5 Jun 2023 23:57:54 GMT'
             }
           ]
         }
@@ -226,11 +233,13 @@ exports.mockData = {
           announcements: [
             {
               id: 42,
-              text: "Tryouts for team quarterback in the August lineup will start NEXT WEEK. Let's go, Rhinos!"
+              text: "Tryouts for team quarterback in the August lineup will start NEXT WEEK. Let's go, Rhinos!",
+              createdAt: 'Tue, 13 Jun 2023 23:57:54 GMT'
             },
             {
               id: 962,
-              text: "Though not official, Coach is in talks with Jeanine from the varsity cheer squad to have them cheer for us on our next big game 👀"
+              text: "Though not official, Coach is in talks with Jeanine from the varsity cheer squad to have them cheer for us on our next big game 👀",
+              createdAt: 'Sun, 4 Jun 2023 23:57:54 GMT'
             }
           ]
         }
@@ -261,32 +270,33 @@ exports.mockData = {
             {
               name: 'Training Session',
               location: "HoopWorld Gymnasium",
-              date: 'July 5, 2023',
+              date: 'July 5 2023',
               time: '8:00PM'
             },
             {
               name: 'Rebounding Drills',
               location: "Alley-Oop Arena",
-              date: 'July 22, 2023',
+              date: 'July 22 2023',
               time: '5:45PM'
             },
             {
               name: 'Training Session',
               location: "Fastbreak Fitness Center",
-              date: 'July 29, 2023',
+              date: 'July 29 2023',
               time: '6:45PM'
             },
             {
               name: 'Conditioning Drills',
               location: "Alley-Oop Arena",
-              date: 'August 17, 2023',
+              date: 'August 17 2023',
               time: '5:45PM'
             }
           ],
           announcements: [
             {
               id: 33382,
-              text: "Caleb, you left your water bottle in the locker room. It's in the Lost and Found at the front desk of Alley-Oop Arena"
+              text: "Caleb, you left your water bottle in the locker room. It's in the Lost and Found at the front desk of Alley-Oop Arena",
+              createdAt: 'Wed, 14 Jun 2023 23:57:54 GMT'
             }
           ]
         }

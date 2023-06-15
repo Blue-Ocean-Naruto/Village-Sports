@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   imgContainer: {
-    // backgroundColor: 'blue',
+    backgroundColor: 'blue',
     height: '200%',
     borderRadius: 10
   },
