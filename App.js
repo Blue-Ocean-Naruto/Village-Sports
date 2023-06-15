@@ -30,6 +30,7 @@ export default function App() {
   const [username, setUsername] = useState(null);
 
   return (
+
     <UsernameContext.Provider value={[username, setUsername]}>
       <NavigationContainer>
         <Stack.Navigator>
@@ -62,6 +63,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </UsernameContext.Provider>
+
 
 
   );
