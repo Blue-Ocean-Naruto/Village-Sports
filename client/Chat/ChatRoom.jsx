@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext, useLayoutEffect } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { db } from '../../firebase';
 import { collection, query, onSnapshot, orderBy, doc, getDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import LinearView from '../sharedComponents/LinearView.jsx'
+import UsernameContext from '../sharedComponents/UsernameContext.jsx'
 
 const ChatRoom = ({ navigation, route }) => {
+  const [username, setUsername] = useContext(UsernameContext);
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
-  var myUserName = 'Kisame';
 
   const scrollViewRef = useRef();
 
@@ -25,19 +26,22 @@ const ChatRoom = ({ navigation, route }) => {
         messages.push(doc.data());
       });
       setChatMessages(messages);
-      setTimeout(() => {
-        scrollViewRef.current?.scrollToEnd({ animated: false });
-      }, 100);
     });
 
     return () => unsubscribe(); // Unsubscribe to changes when the component unmounts
   }, []);
 
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: false });
+    }, 0)
+  }, [chatMessages]);
+
   const onSend = async () => {
     if (message.length > 0) {
       await addDoc(collection(db, "Chat Room", roomName, "messages"), {
         message,
-        user_name: 'Kisame', // Replace with the actual user name
+        user_name: username, // Replace with the actual user name
         createdAt: serverTimestamp(),
       });
       setMessage('');  // Clear the input field after the message is sent
@@ -48,7 +52,7 @@ const ChatRoom = ({ navigation, route }) => {
       <View style={styles.container}>
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.chatContainer}>
           {chatMessages.map((chat, index) => {
-            if (chat.user_name === myUserName) {
+            if (chat.user_name === username) {
               return (
                 <View key={index} style={styles.myMessageContainer}>
                   <Text style={styles.myUserName}>{chat.user_name}</Text>
@@ -67,7 +71,8 @@ const ChatRoom = ({ navigation, route }) => {
                 </View>
               );
             }
-          })}
+          })
+          }
         </ScrollView>
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.inputContainer}>
