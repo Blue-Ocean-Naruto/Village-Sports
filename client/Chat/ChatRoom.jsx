@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, useLayoutEffect } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { db } from '../../firebase';
 import { collection, query, onSnapshot, orderBy, doc, getDoc, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -26,13 +26,16 @@ const ChatRoom = ({ navigation, route }) => {
         messages.push(doc.data());
       });
       setChatMessages(messages);
-      setTimeout(() => {
-        scrollViewRef.current?.scrollToEnd({ animated: false });
-      }, 100);
     });
 
     return () => unsubscribe(); // Unsubscribe to changes when the component unmounts
   }, []);
+
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: false });
+    }, 0)
+  }, [chatMessages]);
 
   const onSend = async () => {
     if (message.length > 0) {
@@ -68,7 +71,8 @@ const ChatRoom = ({ navigation, route }) => {
                 </View>
               );
             }
-          })}
+          })
+          }
         </ScrollView>
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.inputContainer}>
