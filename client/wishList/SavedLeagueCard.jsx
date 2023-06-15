@@ -23,7 +23,7 @@ export default function SavedLeagueCard({ navigation, league }) {
 const styles = StyleSheet.create({
   card: {
     width: '45%',
-    height: '25%',
+    height: 189,
     marginLeft: 15,
     marginBottom: 15,
     backgroundColor: '#D9D9D918',

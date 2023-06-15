@@ -8,7 +8,7 @@ export default function LeaguesSaved({ navigation, wishList }) {
   return (
     <SafeAreaView style={styles.safeContainer}>
       <ScrollView contentContainerStyle={styles.container}>
-        {wishList.map((league) => (
+        {wishList.length === 0 ? null : wishList.map((league) => (
           <SavedLeagueCard navigation={navigation} league={league} key={league.id} />
         ))}
         <AddLeagueCard navigation={navigation} />
