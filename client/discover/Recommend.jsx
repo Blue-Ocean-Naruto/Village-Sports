@@ -6,28 +6,30 @@ import { mockData } from '../sharedComponents/mockData.js';
 import tw from 'tailwind-react-native-classnames'
 
 const Recommend = ({route, navigation}) => {
-  const [rec, setRec] = useState([]);
-  const { selected } = route.params
   const { leagues } = mockData;
+  const [rec, setRec] = useState(leagues);
+  const { selected } = route.params
 
   useEffect(() => {
-    const filteredLeagues = leagues.filter(league =>
-      selected.includes(league.sport)
-    )
-    setRec(filteredLeagues)
+    if (selected.length) {
+      const filteredLeagues = leagues.filter(league =>
+        selected.includes(league.sport)
+        )
+        setRec(filteredLeagues)
+      }
   }, [route])
 
   return (
     <LinearGradient style={[styles.gradient]} colors={["#272838", "rgba(206, 185, 146, 0.35)"]}>
       <SafeAreaView style={styles.container}>
-        <View style={[tw`flex flex-col flex-1 justify-between`]}>
+        <View style={[tw`flex flex-col flex-1 justify-between h-1/4`]}>
           <View style={[tw`h-1/4`]}>
             {rec.slice(0,3).map(league => (
               <TouchableOpacity key={league.id} onPress={() => navigation.navigate('League', {league: league})} style={[styles.round, tw`self-center border border-gray-500 p-2 w-5/6 my-1`]}>
                 <Text style={[tw`text-xl text-white`]}>
                   {league.name}
                 </Text>
-                <Text style={[styles.goldBackground, tw`self-start my-1 p-1`, {width: 'auto'}]}>
+                <Text style={[styles.goldBackground, styles.round, tw`self-start my-1 p-1`, {width: 'auto'}]}>
                   {league.sport}
                 </Text>
                 <Image style={[tw`self-center h-2/3 w-5/6 mb-5`]} source={{uri: league.picture}}/>
@@ -54,7 +56,6 @@ const styles = StyleSheet.create({
   },
   goldBackground: {
     backgroundColor: '#CEB992',
-    borderRadius: 10
   },
   button: {
     backgroundColor: '#73937E',

@@ -12,13 +12,13 @@ export default function AnnouncementCard({ announcement }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderLeftWidth: 4,
-    borderLeftColor: '#DCABDF',
+    backgroundColor: '#272838',
     margin: 10,
     marginLeft: 20
   },
   text: {
     marginLeft: 10,
-    color: '#CEB992'
+    color: '#FFF',
+    padding: 10
   }
 })
