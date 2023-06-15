@@ -16,7 +16,7 @@ console.log("This is our route value", route)
   const [about, setAbout] = useState('')
   const [level, setLevel] = useState('')
   const [interests, setInterests] = useState('')
-  const self = useContext(UsernameContext)[0];
+  const self = useContext(UsernameContext).username;
 
 useEffect(() => {
   if(isFocused){
