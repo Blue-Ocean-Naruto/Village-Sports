@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { View, Text, TextInput, Button, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { db } from '../../firebase';
 import { collection, query, onSnapshot, orderBy, doc, getDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import LinearView from '../sharedComponents/LinearView.jsx'
+import UsernameContext from '../sharedComponents/UsernameContext.jsx'
 
 const ChatRoom = ({ navigation, route }) => {
+  const [username, setUsername] = useContext(UsernameContext);
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
-  var myUserName = 'Granit Saka';
 
   const scrollViewRef = useRef();
 
@@ -37,7 +38,7 @@ const ChatRoom = ({ navigation, route }) => {
     if (message.length > 0) {
       await addDoc(collection(db, "Chat Room", roomName, "messages"), {
         message,
-        user_name: 'Granit Saka', // Replace with the actual user name
+        user_name: username, // Replace with the actual user name
         createdAt: serverTimestamp(),
       });
       setMessage('');  // Clear the input field after the message is sent
@@ -48,7 +49,7 @@ const ChatRoom = ({ navigation, route }) => {
       <View style={styles.container}>
         <ScrollView ref={scrollViewRef} contentContainerStyle={styles.chatContainer}>
           {chatMessages.map((chat, index) => {
-            if (chat.user_name === myUserName) {
+            if (chat.user_name === username) {
               return (
                 <View key={index} style={styles.myMessageContainer}>
                   <Text style={styles.myUserName}>{chat.user_name}</Text>
