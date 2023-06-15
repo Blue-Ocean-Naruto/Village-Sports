@@ -16,23 +16,35 @@ console.log("This is our route value", route)
   const [about, setAbout] = useState('')
   const [level, setLevel] = useState('')
   const [interests, setInterests] = useState('')
-
+  const self = useContext(UsernameContext)[0];
 
 useEffect(() => {
   if(isFocused){
     console.log(route.params)
+    let person;
     if (route.params === undefined) {
-      let person = useContext(UsernameContext)
-      console.log(person)
+      person = self
+      setSame(true)
     } else {
-      let person = route.params.username;
+      person = route.params.username;
     }
     const users = db.collection('mockusers')
-    users.where('username', '==', person).get().then((doc)=> {
+    console.log()
+    users.where('username', '==', person).get().then((query)=> {
+      let doc = query.docs[0]
       if (!doc.exists) {
         console.log('No such document!');
       } else {
-        console.log('Document data:', doc.data());
+        let data = doc.data()
+        let profileData= {
+          id:data.id,
+          info:JSON.parse(data.info),
+          profile_pic:data.profile_pic,
+          username:data.username,
+          teams:JSON.parse(data.teams)
+        }
+        console.log(profileData)
+        setData(profileData)
       }
     })
   }
@@ -41,14 +53,7 @@ useEffect(() => {
 // step 1: get user data from firebase based on the ID which is passed as an argument.
 
 // Check to see if the Login and Profile ID are the same.
-function setOther(){
-  setSame(!same)
-  if(same){
-    setData(Data[Tobi])
-  } else{
-    setData(Data[Naruto])
-  }
-}
+
 // We don't want to normally be able to update the info. Only when we click on the update button does it take us to the update mode.
 function updater(){
   setUpdate(!update)
