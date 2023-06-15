@@ -24,7 +24,7 @@ export default function Home({ navigation }) {
       </ScrollView>
         <Text style={styles.myLeagues}>Announcements</Text>
       <ScrollView style={styles.announcementContainer}>
-        {announcements.map((announcement, i) => <Announcements leagueName={announcement.teamName} announceList={announcement.announcements} key={i}/>)}
+        {announcements.map((announcement, i) => <Announcements teamName={announcement.teamName} announceList={announcement.announcements} key={i}/>)}
       </ScrollView>
       <Pressable style={styles.button} onPress={() =>
           navigation.navigate('Discover')

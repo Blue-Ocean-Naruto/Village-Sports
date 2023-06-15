@@ -1,14 +1,17 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import AnnouncementCard from './AnnouncementCard.jsx';
+import OldAnnouncements from './OldAnnouncements.jsx';
 
-export default function Announcements({leagueName, announceList}) {
+export default function Announcements({teamName, announceList}) {
+  const [oldAnnounce, setOldAnnounce] = useState([]);
+  const [newAnnounce, setNewAnnounce] = useState([]);
+  const [seeMore, setSeeMore] = useState(false);
+
   // This range block will work if you want to filter only announcements that are a week old
   const min = parseInt(new Date().setDate(new Date().getDate() - 7));
   const lastWeek = new Date(min).toUTCString();
-
-  console.log(lastWeek)
 
   // for dev test purposes, I will set the filter to be no more than 5 minutes old
   // const test = parseInt(Date.now());
@@ -17,13 +20,28 @@ export default function Announcements({leagueName, announceList}) {
   // // change a UTC string to a 'nice date' format to render on the events:
   // // const niceDate = new Date(Date.parse(timeAgo)).toDateString();
   // console.log(timeAgo)
+  useEffect(() => {
+    const oldAnnouncements = announceList.filter((announcement) => announcement.createdAt < lastWeek);
+    const newAnnouncements = announceList.filter((announcement) => announcement.createdAt >= lastWeek);
+
+    if (oldAnnouncements.length === 0) {
+      setSeeMore(false);
+    }
+    setOldAnnounce(oldAnnouncements);
+    setNewAnnounce(newAnnouncements);
+
+  }, [announceList])
 
   return (
     <View style={styles.container}>
       <View style={styles.nameBar}>
-        <Text style={styles.leagueName}>{leagueName}</Text>
+        <Text style={styles.leagueName}>{teamName}</Text>
+        {oldAnnounce.length > 0 && <TouchableOpacity style={styles.prevAnnounce} onPress={() => setSeeMore(!seeMore)}>
+          <Text style={styles.prevAnnounce}>See Previous</Text>
+        </TouchableOpacity>}
       </View>
-      {announceList.filter((announcement) => announcement.createdAt >= lastWeek).map((announcement) => <AnnouncementCard announcement={announcement} key={announcement.id}/>)}
+      {newAnnounce.map((announcement) => <AnnouncementCard announcement={announcement} key={announcement.id}/>)}
+      {seeMore && oldAnnounce.map((announcement) => <OldAnnouncements announcement={announcement} key={announcement.id}/>)}
     </View>
   )
 }
@@ -48,6 +66,14 @@ const styles = StyleSheet.create({
   nameBar: {
     borderLeftWidth: 4,
     borderLeftColor: '#DCABDF',
-    marginTop: 10
+    marginTop: 10,
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: 'row'
+  },
+  prevAnnounce: {
+    color: '#DCABDF',
+    textDecorationLine: 'underline',
+    alignSelf: 'center'
   }
 })
