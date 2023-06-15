@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Image, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
-import { auth } from '../../firebase';
+import { db, auth } from '../../firebase';
 import LinearView from '../sharedComponents/LinearView.jsx';
 import Logo from '../../assets/VillageSportsLogo.png';
 import { useRoute } from '@react-navigation/native';
@@ -10,22 +10,43 @@ const Login = ({navigation, route}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { login } = route.params;
+  const { setUser } = route.params;
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        login(true);
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(user => {
+  //     if (user) {
+  //       setUser('placeholder');
+  //     }
+  //   })
+  //   return unsubscribe;
+  // }, []);
+
+  const getUsernameByEmail = async (email) => {
+    try {
+      const querySnapshot = await db.collection('usernames').where('email', '==', email).get();
+
+      if (!querySnapshot.empty) {
+        const document = querySnapshot.docs[0]
+        const userData = document.data();
+        const username = userData.username;
+        setUser(username);
+        console.log('username is', username);
+      } else {
+        console.error('Error querying user data:', error);
       }
-    })
-    return unsubscribe;
-  }, []);
+    } catch (error) {
+      console.error('Error querying user data:', error);
+    }
+  }
 
-  const handleLogin = () => {
+
+
+
+  const handleLogin = async () => {
     auth
       .signInWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
+      .then(() => {
+        getUsernameByEmail(email);
       })
       .catch(err => alert(err.message))
   }
@@ -107,7 +128,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-//    width: '80%%'
+   width: '80%'
   },
   logo: {
     width: 200,
@@ -119,7 +140,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-//    minWidth: '100%',
+   minWidth: '100%',
     textAlign: 'center',
   },
   loginButton: {
