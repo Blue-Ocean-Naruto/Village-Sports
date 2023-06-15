@@ -1,55 +1,65 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Image, TouchableOpacity, Text, View, TextInput } from 'react-native';
 import LinearView from '../sharedComponents/LinearView.jsx'
 import { mockData } from "../sharedComponents/mockData.js"
-import ProfileButton from './profileButton.jsx'
 import { useIsFocused } from '@react-navigation/native'
-
-const Data = mockData.userProfiles;
+import { db } from '../../firebase.js';
+import UsernameContext from '../sharedComponents/UsernameContext.jsx'
 
 const Profile = ({route, navigation}) => {
-
-  const Naruto = 0;
-  const Tobi = 1;
-
-   ProfileID = Naruto;
-   LoginID = Naruto;
-  const [same, setSame] = useState(true)
+console.log("This is our route value", route)
+  const isFocused = useIsFocused()
+  const [same, setSame] = useState(false)
   const [update, setUpdate] = useState(false)
-  const [data, setData] = useState(Data[Naruto])
-
+  const [data, setData] = useState({username:'', info:{sobriquet:'', level:'', about_me:'', interests:''}, profile_pic:'', teams:{}})
   const [sobriquet, setSobriquet] = useState('')
   const [about, setAbout] = useState('')
   const [level, setLevel] = useState('')
   const [interests, setInterests] = useState('')
-// step 1: get user data from firebase based on the ID which is passed as an argument.
-  const isFocused = useIsFocused()
+  const self = useContext(UsernameContext).username;
 
 useEffect(() => {
-    if(isFocused){
-      if(route.params !== undefined){
-      user = route.params.username === 'Tobi'? Tobi : Naruto
-       setData(Data[user])
-      }
+  if(isFocused){
+    console.log(route.params)
+    let person;
+    if (route.params === undefined) {
+      person = self
+      setSame(true)
+    } else {
+      person = route.params.username;
     }
-}, [isFocused])
-// Check to see if the Login and Profile ID are the same.
-function setOther(){
-  setSame(!same)
-  if(same){
-    setData(Data[Tobi])
-  } else{
-    setData(Data[Naruto])
+    const users = db.collection('mockusers')
+    console.log()
+    users.where('username', '==', person).get().then((query)=> {
+      let doc = query.docs[0]
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        let data = doc.data()
+        let profileData= {
+          id:data.id,
+          info:JSON.parse(data.info),
+          profile_pic:data.profile_pic,
+          username:data.username,
+          teams:JSON.parse(data.teams)
+        }
+        console.log(profileData)
+        setData(profileData)
+      }
+    })
   }
-}
+}, [isFocused])
+
+// step 1: get user data from firebase based on the ID which is passed as an argument.
+
+// Check to see if the Login and Profile ID are the same.
+
 // We don't want to normally be able to update the info. Only when we click on the update button does it take us to the update mode.
 function updater(){
   setUpdate(!update)
 }
 // We'd like to be able to see the leagues which our person is in. On clicking, this should take us to the league page which reflects the league this person is in.
-function moveToLeague(league){
-  return () => navigation.navigate('League', {league: league})
-}
+
 function controlState(stateSetter){
   return (text)=>{
     stateSetter(text)
@@ -61,6 +71,7 @@ function submitChange(state,setState){
     setState('')
   }
 }
+
   return (
     <LinearView children={
       <>
@@ -113,15 +124,13 @@ function submitChange(state,setState){
       </TouchableOpacity>}
 
       </View>
-      {/*update && <TextInput placeholder="what you'd Like to be called"/>*/}
-      {/*update && <TouchableOpacity title="Submit Change"/>*/}
   </View >
+
       {/**Body --- About me, League, and Infos */}
   <View style={{
       flex:5,
       flexDirection:"column",
     }}>
-
     <Text style={{
     color: '#CEB992',
     fontSize: 16,
@@ -173,11 +182,11 @@ function submitChange(state,setState){
     marginRight:2,
     alignSelf: 'center'
   }}>Leagues:</Text>
-        {Object.values(data.teams) > 0 ? <Text>Not Part of Any Leagues. A Rogue Ninja, Perhaps?</Text> : Object.entries(data.teams).map((team)=>{
+        {Object.values(data.teams) > 0 ? <Text>Not Part of Any Leagues. A Rogue Ninja, Perhaps?</Text> : Object.values(data.teams).map((team)=>{
          return (
-         <TouchableOpacity key={team[1]} onPress={moveToLeague(team[0])}>
+         <TouchableOpacity key={team} onPress={() => moveToLeague(team)}>
          <Text>
-            {team[1]}
+            {team}
           </Text>
         </TouchableOpacity>
       )
@@ -185,12 +194,9 @@ function submitChange(state,setState){
     </View>}
 
   </View>
+
       {/**Bottom Level --- Navigation */}
     <View style={{flex:2, flexDirection:'row', justifyContent:'space-around'}}>
-     <ProfileButton navigation={navigation} username='Tobi' component={(
-      <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{same ?"Switch to Other":"Switch to Own"}</Text>)} />
-
-
 
       {same && <TouchableOpacity onPress={updater} >
           <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{update?"Cancel Update":"Update"}</Text>
