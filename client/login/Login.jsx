@@ -7,19 +7,35 @@ import Logo from '../../assets/VillageSportsLogo.png';
 import { useRoute } from '@react-navigation/native';
 
 const Login = ({navigation, route}) => {
+  /**
+   * Seeding function
+   */
+
+  // const mockNames = ['sharkieOWO','sharkieUWU','Fred','Joe','Bob','Sally','Ole','Mart','Jesus','Kieran','Amy','Alex','Rachel','Maggie','Karen','Jessica','Yolanda','Maria','William','Matt','James','Alexander','Kelvin','Van','Ian','Mack','Michael','Matthew','Matias','Anders','Bose','Albert','Maxwell','Ludwig','Paul','Nate','Chris','Duane','Cap','Tony','Tucker','Milo','Max','Xavier','Caleb','Silas','Asher','Benji','Tyrone','Dan','Michelle','Finn','Troy','Chad','Damian','Sahid','Chad','Chadius','Chadd','David','Ryan','Tyler','Chris','Thomas','Josh','Dota','Fox','Chen','Mag','Sandy','Jamal','Andrew','Angelica','Shannon','Peter','Jay','MJ','Erving','Colby','Shaqira','Spud','Ron','Meta','Patrick','Larry','Dennis']
+
+  // const seedDB = () => {
+  //   for (let i = 2; i < mockNames.length; i++) {
+  //     const currentName = mockNames[i];
+  //     db.collection('mockusers').add({
+  //       id: i,
+  //       username: currentName,
+  //       info: '{ "about_me":"lorem ipsum", "sobriquet":"more lorem ipsum",   "interests":"random stuff", "level":"genin" }',
+  //       profile_pic: 'https://images.unsplash.com/photo-1685195154261-c8167ca7f88c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=700&q=60',
+  //       teams: '{"Elite eSports League (EEL)":"Nebula Nexus (LoL)"}',
+  //       wishlist: [],
+  //     })
+  //   }
+  // }
+
+  /**
+   * Seeding Function
+   */
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const { setUser } = route.params;
-
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged(user => {
-  //     if (user) {
-  //       setUser('placeholder');
-  //     }
-  //   })
-  //   return unsubscribe;
-  // }, []);
 
   const getUsernameByEmail = async (email) => {
     try {
@@ -38,9 +54,6 @@ const Login = ({navigation, route}) => {
       console.error('Error querying user data:', error);
     }
   }
-
-
-
 
   const handleLogin = async () => {
     auth
@@ -110,6 +123,13 @@ const Login = ({navigation, route}) => {
                 style={styles.goToSignUp}
               >Sign Up</Text>
             </TouchableOpacity>
+
+            {/* <TouchableOpacity
+              onPress={seedDB}
+            >
+              <Text>Seed DB</Text>
+            </TouchableOpacity> */}
+
           </View>
         </KeyboardAvoidingView>
       </View>
