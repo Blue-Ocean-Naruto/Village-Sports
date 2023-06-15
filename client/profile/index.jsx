@@ -1,22 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Image, TouchableOpacity, Text, View, TextInput } from 'react-native';
 import LinearView from '../sharedComponents/LinearView.jsx'
 import { mockData } from "../sharedComponents/mockData.js"
-const Data = mockData.userProfiles;
-const Profile = ({ProfileID, LoginID}) => {
+import { useIsFocused } from '@react-navigation/native'
+import { db } from '../../firebase.js';
 
-  const Naruto = 0;
-  const Tobi = 1;
-  // ProfileID = Naruto;
-  // LoginID = Naruto;
-  const [same, setSame] = useState(true)
+const Profile = ({route, navigation}) => {
+console.log("This is our route value", route)
+  const isFocused = useIsFocused()
+  const [same, setSame] = useState(false)
   const [update, setUpdate] = useState(false)
-  const [data, setData] = useState(Data[Naruto])
-
+  const [data, setData] = useState({username:'', info:{sobriquet:'', level:'', about_me:'', interests:''}, profile_pic:'', teams:{}})
   const [sobriquet, setSobriquet] = useState('')
   const [about, setAbout] = useState('')
   const [level, setLevel] = useState('')
   const [interests, setInterests] = useState('')
+
+
+useEffect(() => {
+  if(isFocused){
+    console.log(route.params)
+    if (route.params.username === undefined) {
+      let person = route.params.self;
+      console.log(route.params.self)
+    } else {
+      let person = route.params.username;
+    }
+    const users = db.collection('mockusers')
+    users.where('username', '==', person).get().then((doc)=> {
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        console.log('Document data:', doc.data());
+      }
+    })
+  }
+}, [isFocused])
+
 // step 1: get user data from firebase based on the ID which is passed as an argument.
 
 // Check to see if the Login and Profile ID are the same.
@@ -33,9 +53,7 @@ function updater(){
   setUpdate(!update)
 }
 // We'd like to be able to see the leagues which our person is in. On clicking, this should take us to the league page which reflects the league this person is in.
-function moveToLeague(league){
-  console.log("moved to this league",league)
-}
+
 function controlState(stateSetter){
   return (text)=>{
     stateSetter(text)
@@ -47,6 +65,7 @@ function submitChange(state,setState){
     setState('')
   }
 }
+
   return (
     <LinearView children={
       <>
@@ -99,15 +118,13 @@ function submitChange(state,setState){
       </TouchableOpacity>}
 
       </View>
-      {/*update && <TextInput placeholder="what you'd Like to be called"/>*/}
-      {/*update && <TouchableOpacity title="Submit Change"/>*/}
   </View >
+
       {/**Body --- About me, League, and Infos */}
   <View style={{
       flex:5,
       flexDirection:"column",
     }}>
-
     <Text style={{
     color: '#CEB992',
     fontSize: 16,
@@ -171,11 +188,9 @@ function submitChange(state,setState){
     </View>}
 
   </View>
+
       {/**Bottom Level --- Navigation */}
     <View style={{flex:2, flexDirection:'row', justifyContent:'space-around'}}>
-     {/* <TouchableOpacity onPress={setOther} >
-          <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{same ?"Switch to Other":"Switch to Own"}</Text>
-          </TouchableOpacity> */}
 
       {same && <TouchableOpacity onPress={updater} >
           <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{update?"Cancel Update":"Update"}</Text>
