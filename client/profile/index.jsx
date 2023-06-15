@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, Image, TouchableOpacity, Text, View, TextInput } from 'react-native';
 import LinearView from '../sharedComponents/LinearView.jsx'
 import { mockData } from "../sharedComponents/mockData.js"
 import { useIsFocused } from '@react-navigation/native'
 import { db } from '../../firebase.js';
+import UsernameContext from '../sharedComponents/UsernameContext.jsx'
 
 const Profile = ({route, navigation}) => {
 console.log("This is our route value", route)
@@ -20,9 +21,9 @@ console.log("This is our route value", route)
 useEffect(() => {
   if(isFocused){
     console.log(route.params)
-    if (route.params.username === undefined) {
-      let person = route.params.self;
-      console.log(route.params.self)
+    if (route.params === undefined) {
+      let person = useContext(UsernameContext)
+      console.log(person)
     } else {
       let person = route.params.username;
     }
