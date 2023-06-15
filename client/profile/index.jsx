@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Image, TouchableOpacity, Text, View, TextInput } from 'react-native';
 import LinearView from '../sharedComponents/LinearView.jsx'
 import { mockData } from "../sharedComponents/mockData.js"
+import ProfileButton from './profileButton.jsx'
+import { useIsFocused } from '@react-navigation/native'
+
 const Data = mockData.userProfiles;
-const Profile = ({ProfileID, LoginID}) => {
+
+const Profile = ({route, navigation}) => {
 
   const Naruto = 0;
   const Tobi = 1;
-  // ProfileID = Naruto;
-  // LoginID = Naruto;
+
+   ProfileID = Naruto;
+   LoginID = Naruto;
   const [same, setSame] = useState(true)
   const [update, setUpdate] = useState(false)
   const [data, setData] = useState(Data[Naruto])
@@ -18,7 +23,16 @@ const Profile = ({ProfileID, LoginID}) => {
   const [level, setLevel] = useState('')
   const [interests, setInterests] = useState('')
 // step 1: get user data from firebase based on the ID which is passed as an argument.
+  const isFocused = useIsFocused()
 
+useEffect(() => {
+    if(isFocused){
+      if(route.params !== undefined){
+      user = route.params.username === 'Tobi'? Tobi : Naruto
+       setData(Data[user])
+      }
+    }
+}, [isFocused])
 // Check to see if the Login and Profile ID are the same.
 function setOther(){
   setSame(!same)
@@ -34,7 +48,7 @@ function updater(){
 }
 // We'd like to be able to see the leagues which our person is in. On clicking, this should take us to the league page which reflects the league this person is in.
 function moveToLeague(league){
-  console.log("moved to this league",league)
+  return () => navigation.navigate('League', {league: league})
 }
 function controlState(stateSetter){
   return (text)=>{
@@ -159,11 +173,11 @@ function submitChange(state,setState){
     marginRight:2,
     alignSelf: 'center'
   }}>Leagues:</Text>
-        {Object.values(data.teams) > 0 ? <Text>Not Part of Any Leagues. A Rogue Ninja, Perhaps?</Text> : Object.values(data.teams).map((team)=>{
+        {Object.values(data.teams) > 0 ? <Text>Not Part of Any Leagues. A Rogue Ninja, Perhaps?</Text> : Object.entries(data.teams).map((team)=>{
          return (
-         <TouchableOpacity key={team} onPress={() => moveToLeague(team)}>
+         <TouchableOpacity key={team[1]} onPress={moveToLeague(team[0])}>
          <Text>
-            {team}
+            {team[1]}
           </Text>
         </TouchableOpacity>
       )
@@ -173,9 +187,10 @@ function submitChange(state,setState){
   </View>
       {/**Bottom Level --- Navigation */}
     <View style={{flex:2, flexDirection:'row', justifyContent:'space-around'}}>
-     <TouchableOpacity onPress={setOther} >
-          <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{same ?"Switch to Other":"Switch to Own"}</Text>
-          </TouchableOpacity>
+     <ProfileButton navigation={navigation} username='Tobi' component={(
+      <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{same ?"Switch to Other":"Switch to Own"}</Text>)} />
+
+
 
       {same && <TouchableOpacity onPress={updater} >
           <Text style={{color:'#CEB992', fontSize:12, marginTop:2, alignSelf:'center'}}>{update?"Cancel Update":"Update"}</Text>
