@@ -118,8 +118,6 @@ const SignUp = ({ navigation, route }) => {
   );
 };
 export default SignUp;
-// blocked out because format '80%%' may be crashing my android instance of the app
-
 
 const styles = StyleSheet.create(
   {bigContainer: {
@@ -131,7 +129,7 @@ const styles = StyleSheet.create(
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-   width: '80%%'
+    width: '80%'
   },
   logo: {
     width: 200,
@@ -143,7 +141,7 @@ const styles = StyleSheet.create(
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-   minWidth: '100%',
+    minWidth: '100%',
     textAlign: 'center',
   },
   signUpButton: {
@@ -152,7 +150,7 @@ const styles = StyleSheet.create(
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 15,
-   minWidth: '100%',
+    minWidth: '100%',
   },
   signUpText: {
     textAlign: 'center',
@@ -168,19 +166,19 @@ const styles = StyleSheet.create(
     color: 'white',
     textDecorationLine: 'underline'
   },
-
   discoverContainer: {
 
+  },
   discoverButton: {
     backgroundColor: '#73937E',
     paddingHorizontal: 15,
     paddingVertical: 7,
     borderRadius: 10,
     marginTop: 40,
-   minWidth: '50%',
+    minWidth: '50%',
   },
   discoverText: {
     textAlign: 'center',
   }
-}});
+});
 

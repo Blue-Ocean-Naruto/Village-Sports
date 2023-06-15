@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
@@ -23,14 +23,32 @@ import ChatSelection from './client/Chat/index.jsx'
 import ChatRoom from './client/Chat/ChatRoom.jsx'
 import Profile from './client/profile/index.jsx'
 import UsernameContext from './client/sharedComponents/UsernameContext.jsx'
+import { db } from './firebase';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [username, setUsername] = useState(null);
+  const [leagues, setLeagues] = useState([]);
+
+  useEffect(() => {
+    const tempArr = [];
+    db.collection('mockLeagues').get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((documentSnapshot) => {
+          tempArr.push(documentSnapshot.data());
+        });
+        return tempArr;
+      })
+      .then((resultArr) => {
+        setLeagues(resultArr);
+      })
+      .catch((err) => (console.log(err)));
+  }, []);
 
   return (
-    <UsernameContext.Provider value={[username, setUsername]}>
+
+    <UsernameContext.Provider value={{username, setUsername, leagues, setLeagues}}>
       <NavigationContainer>
         <Stack.Navigator>
           {
@@ -62,6 +80,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </UsernameContext.Provider>
+
 
 
   );
