@@ -48,7 +48,7 @@ export default function App() {
                   headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 },
                   headerLeft: () => (<HeaderBackButton tintColor="white" onPress={() => (navigation.goBack())}/>)
                 })}/>
-              <Stack.Screen name="Discover" component={Discover} />
+              <Stack.Screen name="Discover" component={Discover} options={{headerTitle: '', headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}} />
               <Stack.Screen name="League" component={League} />
               <Stack.Screen name="Recommend" component={Recommend} options={{headerTitle: '', headerTintColor: '#ffffff', headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0}}}/>
               <Stack.Screen name="chat" component={ChatSelection} />
