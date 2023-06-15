@@ -7,7 +7,7 @@ import UsernameContext from '../sharedComponents/UsernameContext.jsx'
 import ProfileButton from '../profile/profileButton.jsx'
 
 const ChatRoom = ({ navigation, route }) => {
-  const [username, setUsername] = useContext(UsernameContext);
+  const {username, setUsername} = useContext(UsernameContext);
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;

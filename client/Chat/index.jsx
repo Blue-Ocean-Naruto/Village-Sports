@@ -10,7 +10,7 @@ const ChatSelection = ({ navigation }) => {
   return (
       <LinearView>
         <Text style={styles.title}>
-          Messages
+          Chat Rooms
         </Text>
         <View style={styles.container}>
           <TouchableOpacity
