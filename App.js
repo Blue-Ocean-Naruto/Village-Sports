@@ -26,16 +26,16 @@ import Profile from './client/profile/index.jsx'
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [username, setUsername] = useState(null);
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         {
-          !isSignedIn ? (
+          !username ? (
             <>
-              <Stack.Screen name="Login" component={Login} initialParams={{ login: setIsSignedIn }} options={{ headerShown: false }} />
-              <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+              <Stack.Screen name="Login" component={Login} initialParams={{ setUser: setUsername }} options={{ headerShown: false }} />
+              <Stack.Screen name="SignUp" component={SignUp} initialParams={{ setUser: setUsername }} options={{ headerShown: false }} />
               <Stack.Screen name="Discover" component={DiscoverDemo} options={{ headerShown: false }} />
               <Stack.Screen name="Recommend" component={RecommendDemo} options={{ headerShown: false }} />
             </>
