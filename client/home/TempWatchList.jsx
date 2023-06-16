@@ -9,9 +9,10 @@ import UsernameContext from '../sharedComponents/UsernameContext.jsx';
 
 export default function TempWatchList({ navigation }) {
   const { leagues } = useContext(UsernameContext);
+  const wishList = leagues.slice(leagues.length - 2, leagues.length);
   return (
     <LinearView>
-      <LeaguesSaved navigation={navigation} wishList={leagues} />
+      <LeaguesSaved navigation={navigation} wishList={wishList} />
     </LinearView>
-  )
+  );
 }

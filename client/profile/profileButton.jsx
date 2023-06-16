@@ -12,3 +12,4 @@ function ProfileButton({navigation, username, component}){
   </TouchableOpacity>)
 }
 export default ProfileButton
+
