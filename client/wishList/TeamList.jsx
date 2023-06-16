@@ -6,7 +6,7 @@ export default function TeamList({ teams }) {
     <View style={styles.container}>
       <Text style={styles.headerText}>Teams in the league</Text>
       {teams.map((team, i) => (
-        <Text key={i} style={styles.teamInfo}>{`\u2022 ${JSON.parse(team).name}`}</Text>
+        <Text key={i} style={styles.teamInfo}>{`\u2022 ${team.name}`}</Text>
       ))}
     </View>
   );

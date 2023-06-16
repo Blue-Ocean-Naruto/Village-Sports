@@ -11,6 +11,12 @@ export default function TempWatchList({ navigation }) {
   const { leagues } = useContext(UsernameContext);
   const wishList = leagues.slice(leagues.length - 2, leagues.length);
 
+  wishList.forEach((league) => {
+    const parsedTeams = league.teams.map((team) => {
+      return JSON.parse(team);
+    });
+    league.teams = parsedTeams;
+  });
   return (
     <LinearView>
       <LeaguesSaved navigation={navigation} wishList={wishList} />
