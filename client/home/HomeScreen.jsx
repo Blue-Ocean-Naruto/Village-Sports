@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, Button, View } from 'react-native';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,24 +15,6 @@ import Profile from '../profile/index.jsx'
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
-      {/* <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }}/> */}
-    </Stack.Navigator>
-  );
-}
-
-const WishListStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="WishList" component={TempWatchList} options={{ headerShown: false }} />
-      {/* <Stack.Screen name="Discover" component={Discover} options={{ headerShown: false }} /> */}
-    </Stack.Navigator>
-  );
-}
-
 const HomeScreen = ({ navigation }) => {
   return (
     <Tab.Navigator screenOptions={{
@@ -47,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
         backgroundColor: '#DCABDF',
       }
     }}>
-      <Tab.Screen name="Home2" component={HomeStack} options={{
+      <Tab.Screen name="Home2" component={Home} options={{
         tabBarIcon: (tabInfo) => (
           <Ionicons
             name="ios-home-outline"
@@ -65,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
           />
         )
       }}/>
-      <Tab.Screen name="Saved" component={WishListStack} options={{
+      <Tab.Screen name="Saved" component={TempWatchList} options={{
         tabBarIcon: (tabInfo) => (
           <Ionicons
             name="bookmark-outline"

@@ -61,7 +61,7 @@ export default function App() {
               </>
             ) : (
               <>
-                <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 } }} />
+                <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerTitle: NavStackHeader, headerStyle: { backgroundColor: '#272838', borderBottomWidth: 0 } }}/>
                 <Stack.Screen name="map" component={LeagueMap} options={({ navigation }) => (
                   {
                     headerTitle: NavStackHeader,
