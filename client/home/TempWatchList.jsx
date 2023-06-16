@@ -9,7 +9,7 @@ import UsernameContext from '../sharedComponents/UsernameContext.jsx';
 
 export default function TempWatchList({ navigation }) {
   const { leagues } = useContext(UsernameContext);
-  const wishList = leagues.slice(leagues.length - 2, leagues.length);
+  const wishList = leagues.slice(0, 1);
 
   wishList.forEach((league) => {
     const parsedTeams = league.teams.map((team) => {
