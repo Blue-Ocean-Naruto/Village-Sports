@@ -11,6 +11,7 @@ const ChatRoom = ({ navigation, route }) => {
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
+  // console.log(roomName)
 
   const scrollViewRef = useRef();
 
