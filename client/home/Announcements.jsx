@@ -21,11 +21,15 @@ export default function Announcements({teamName, announceList}) {
   // // const niceDate = new Date(Date.parse(timeAgo)).toDateString();
   // console.log(timeAgo)
   useEffect(() => {
-    const oldAnnouncements = announceList.filter((announcement) => announcement.createdAt < lastWeek);
-    const newAnnouncements = announceList.filter((announcement) => announcement.createdAt >= lastWeek);
+    const oldAnnouncements = announceList.filter((announcement) => {
+      return announcement.createdAt === 'Wed, 03 May 2023 22:00:00 GMT';
+    })
+    const newAnnouncements = announceList.filter((announcement) => announcement.createdAt !== 'Wed, 03 May 2023 22:00:00 GMT');
 
     if (oldAnnouncements.length === 0) {
       setSeeMore(false);
+    } else {
+      setSeeMore(true);
     }
     setOldAnnounce(oldAnnouncements);
     setNewAnnounce(newAnnouncements);
