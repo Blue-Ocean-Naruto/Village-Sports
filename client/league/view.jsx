@@ -1,15 +1,18 @@
 import React, {useState}from 'react';
-import { View, Button, StyleSheet, TouchableOpacity, Text, SafeAreaView, Image, Modal, Pressable } from 'react-native';
+import { View, Button, StyleSheet, TouchableOpacity, Text, SafeAreaView, Image, Modal, Pressable, ScrollView } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const LeagueView = ({ leagues, navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [members, setMembers] = useState([]);
+  const [event, setEvents] = useState([]);
 
   return (
     <LinearGradient style={[styles.gradient]} colors={["#272838", "rgba(206, 185, 146, 0.35)"]}>
       <SafeAreaView style={styles.container}>
+      <ScrollView>
         <Text style={tw`text-center text-white text-2xl`}>{leagues.name}</Text>
         <Image
           style={{ width: '75%', height: '15%', margin: '5%' }}
@@ -27,8 +30,10 @@ const LeagueView = ({ leagues, navigation }) => {
             <Text style={tw`text-center text-white text-lg`}>League Details</Text>
             <Text style={{ color: 'white', fontSize: 18 }} >Name: {leagues.name}</Text>
             <Text style={{ color: 'white', fontSize: 18 }} >Teams:</Text>
-            {leagues.teams.map((team) => (
-              <View key={team.name}>
+            {leagues.teams.map((team, index) => (
+              //setMembers(team.members),
+
+              <View key={index}>
                 <TouchableOpacity onPress={() => setModalVisible(true)} style={{
                   color: 'white', marginLeft: 30, elevation: 10,
                   backgroundColor: "#FFFFFF55",
@@ -57,13 +62,14 @@ const LeagueView = ({ leagues, navigation }) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+
           <Text style={{fontSize:18, padding:10,alignSelf: 'flex-start'}}>Team Members:</Text>
-          {team.members.map((member)=>(
-            <Text key={member} style={styles.modalText}>{member}</Text>
+          {team.members.map((member, index)=>(
+            <Text key={index} style={styles.modalText}>{member}</Text>
             ))}
             <Text style={{fontSize:18, padding:10,alignSelf: 'flex-start'}}>Team Event Dates:</Text>
-            {team.events.map((event)=>(
-            <Text key={event.time} style={styles.modalText}>{event.date}</Text>
+            {team.events.map((event, index)=>(
+            <Text key={index} style={styles.modalText}>{event.date}</Text>
             ))}
 
             <Pressable
@@ -78,6 +84,7 @@ const LeagueView = ({ leagues, navigation }) => {
             ))}
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
     </LinearGradient >
   )
