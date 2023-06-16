@@ -7,7 +7,7 @@ export default function EventInfo({ event }) {
     <View>
       <Text style={styles.eventName}>{event.name}</Text>
       <View style={styles.eventInfo}>
-        <Ionicons name="calendar-sharp" size={25} color={'#272838'}/>
+        <Ionicons name="calendar-sharp" size={35} color={'#272838'}/>
         <View style={styles.dateInfo}>
           <Text style={styles.dateText}>{event.location}</Text>
           <Text style={styles.dateText}>{event.date}</Text>
@@ -20,9 +20,10 @@ export default function EventInfo({ event }) {
 
 const styles = StyleSheet.create({
   eventName: {
-    fontSize: 8,
+    fontSize: 12,
     fontWeight: 'bold',
-    color: '#272838'
+    color: '#272838',
+    marginTop: 8
   },
   eventInfo: {
     display: 'flex',
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   dateText: {
-    fontSize: 8,
+    fontSize: 12,
     color: '#272838',
     marginLeft: 5
   }

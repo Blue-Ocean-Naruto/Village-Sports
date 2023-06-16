@@ -7,16 +7,18 @@ import { db } from '../../firebase.js';
 import UsernameContext from '../sharedComponents/UsernameContext.jsx'
 
 const Profile = ({route, navigation}) => {
-console.log("This is our route value", route)
+
   const isFocused = useIsFocused()
   const [same, setSame] = useState(false)
   const [update, setUpdate] = useState(false)
   const [data, setData] = useState({username:'', info:{sobriquet:'', level:'', about_me:'', interests:''}, profile_pic:'', teams:{}})
   const [sobriquet, setSobriquet] = useState('')
-  const [about, setAbout] = useState('')
+  const [about_me, setAbout] = useState('')
   const [level, setLevel] = useState('')
   const [interests, setInterests] = useState('')
+  const [person,setPerson] = useState('')
   const self = useContext(UsernameContext).username;
+  const [flip, flipper] = useState(true)
 
 useEffect(() => {
   if(isFocused){
@@ -24,9 +26,11 @@ useEffect(() => {
     let person;
     if (route.params === undefined) {
       person = self
+      setPerson(person)
       setSame(true)
     } else {
       person = route.params.username;
+      setPerson(person)
     }
     const users = db.collection('mockusers')
     console.log()
@@ -48,7 +52,7 @@ useEffect(() => {
       }
     })
   }
-}, [isFocused])
+}, [isFocused, flip])
 
 // step 1: get user data from firebase based on the ID which is passed as an argument.
 
@@ -65,10 +69,21 @@ function controlState(stateSetter){
     stateSetter(text)
   }
 }
-function submitChange(state,setState){
+function submitChange(state,setState,param_name){
   return ()=>{
     console.log(state)
-    setState('')
+    const users = db.collection('mockusers')
+    users.where('username', '==', person).get().then((query)=>{
+      let doc = query.docs[0].ref;
+      let info = {...data.info}
+      info[param_name] = state;
+      doc.set({'info':JSON.stringify(info)},{merge:true}).then((result)=>{
+        console.log("We did the map at",result)
+        setState('')
+        flipper(!flip)
+      })
+    })
+
   }
 }
 
@@ -119,7 +134,7 @@ function submitChange(state,setState){
           color:'white',
           alignSelf:'center'
          }}/>}
-         {sobriquet !== '' &&update && same && <TouchableOpacity onPress={submitChange(sobriquet,setSobriquet)} style={{alignSelf:'center'}}>
+         {sobriquet !== '' &&update && same && <TouchableOpacity onPress={submitChange(sobriquet,setSobriquet,'sobriquet')} style={{alignSelf:'center'}}>
           <Text style={{color:'#CEB992', fontSize:8, alignSelf:'center'}}>Submit Change</Text>
       </TouchableOpacity>}
 
@@ -140,8 +155,8 @@ function submitChange(state,setState){
     alignSelf: 'center'
   }}>About {same? "Me" : data.username }</Text>
       {!update && <Text>{data.info.about_me!==''? data.info.about_me: "This ninja remains silent. Who knows what secrets they hold?"}</Text>}
-   {update && same && <TextInput value={about} onChangeText={controlState(setAbout)} placeholder={data.info.about_me}/>}
-   {about !=='' && update && same && <TouchableOpacity onPress={submitChange(about,setAbout)} >
+   {update && same && <TextInput value={about_me} onChangeText={controlState(setAbout)} placeholder={data.info.about_me}/>}
+   {about_me !=='' && update && same && <TouchableOpacity onPress={submitChange(about_me, setAbout,'about_me')} >
           <Text style={{color:'#CEB992', fontSize:8, marginTop:2, alignSelf:'center'}}>Submit Change</Text>
       </TouchableOpacity>}
    <Text style={{
@@ -154,7 +169,7 @@ function submitChange(state,setState){
   }}>Interests:</Text>
   {!update && <Text>{data.info.interests!==''? data.info.interests: "This ninja remains silent. Perhaps they have no interests"}</Text>}
    {update && same && <TextInput value={interests} onChangeText={controlState(setInterests)} placeholder={data.info.interests}/>}
-   {interests !=='' && update && same && <TouchableOpacity onPress={submitChange(interests,setInterests)} >
+   {interests !=='' && update && same && <TouchableOpacity onPress={submitChange(interests,setInterests,'interests')} >
           <Text style={{color:'#CEB992', fontSize:8, marginTop:2, alignSelf:'center'}}>Submit Change</Text>
       </TouchableOpacity>}
         <Text style={{
@@ -167,7 +182,7 @@ function submitChange(state,setState){
   }}>Level:</Text>
   {!update && <Text>{data.info.level!==''? data.info.level: "This ninja remains silent. Perhaps they are embarassed about their level"}</Text>}
    {update && same && <TextInput value={level} onChangeText={controlState(setLevel)}placeholder={data.info.level}/>}
-   {level !=='' && update && same && <TouchableOpacity onPress={submitChange(level,setLevel)} >
+   {level !=='' && update && same && <TouchableOpacity onPress={submitChange(level,setLevel,'level')} >
           <Text style={{color:'#CEB992', fontSize:8, marginTop:2, alignSelf:'center'}}>Submit Change</Text>
       </TouchableOpacity>}
 

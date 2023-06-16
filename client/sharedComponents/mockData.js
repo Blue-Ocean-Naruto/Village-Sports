@@ -19,19 +19,19 @@ exports.mockData = {
             {
               name: 'Group Practice',
               location: 'Southcourt Fields',
-              date: 'June 27, 2023',
+              date: 'June 27 2023',
               time: '12:30PM'
             },
             {
               name: 'Scrimmage vs Royal Ravens',
               location: 'Cascade Stadium',
-              date: 'July 6, 2023',
+              date: 'July 6 2023',
               time: '3:00PM'
             },
             {
               name: 'After Scrim Dinner',
               location: "Winger's Wings & Things",
-              date: 'July 6, 2023',
+              date: 'July 6 2023',
               time: '6:00PM'
             }
           ],
@@ -121,19 +121,19 @@ exports.mockData = {
             {
               name: 'Game vs Icebreakers',
               location: 'Glacier Arena',
-              date: 'June 17, 2023',
+              date: 'Sat Jun 17 2023',
               time: '7:00PM'
             },
             {
               name: 'Give-and-go Drills',
               location: 'Blizzard Bay Rink',
-              date: 'June 20, 2023',
+              date: 'Jun 20 2023',
               time: '5:15PM'
             },
             {
               name: 'Open Rink Mingle',
               location: 'Blizzard Bay Rink',
-              date: 'June 28, 2023',
+              date: 'Jun 28 2023',
               time: '3:30PM'
             }
           ],
@@ -278,25 +278,25 @@ exports.mockData = {
             {
               name: 'Point Play',
               location: 'Grand Slam Gardens',
-              date: 'June 12, 2023',
+              date: 'Mon Jun 12 2023',
               time: '12:30PM'
             },
             {
               name: 'Doubles w/Scrim Partner',
               location: 'Spin City Tennis Club',
-              date: 'June 23, 2023',
+              date: 'Fri Jun 23 2023',
               time: '4:45PM'
             },
             {
               name: 'Groundstroke Drills',
               location: "Grand Slam Gardens",
-              date: 'June 29, 2023',
+              date: 'Thu Jun 29 2023',
               time: '2:00PM'
             },
             {
               name: 'Lunch Break!',
               location: "Rec Room Cafe",
-              date: 'July 1, 2023',
+              date: 'Sat Jul 1 2023',
               time: '1:00PM'
             }
           ],
@@ -456,25 +456,25 @@ exports.mockData = {
             {
               name: 'Training Session',
               location: "HoopWorld Gymnasium",
-              date: 'July 5, 2023',
+              date: 'July 5 2023',
               time: '8:00PM'
             },
             {
               name: 'Rebounding Drills',
               location: "Alley-Oop Arena",
-              date: 'July 22, 2023',
+              date: 'July 22 2023',
               time: '5:45PM'
             },
             {
               name: 'Training Session',
               location: "Fastbreak Fitness Center",
-              date: 'July 29, 2023',
+              date: 'July 29 2023',
               time: '6:45PM'
             },
             {
               name: 'Conditioning Drills',
               location: "Alley-Oop Arena",
-              date: 'August 17, 2023',
+              date: 'August 17 2023',
               time: '5:45PM'
             }
           ],
