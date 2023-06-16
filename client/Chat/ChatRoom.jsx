@@ -43,7 +43,7 @@ const ChatRoom = ({ navigation, route }) => {
     if (message.length > 0) {
       await addDoc(collection(db, "Chat Room", roomName, "messages"), {
         message,
-        user_name: username, // Replace with the actual user name
+        user_name: 'Michael', // Replace with the actual user name
         createdAt: serverTimestamp(),
       });
       setMessage('');  // Clear the input field after the message is sent
