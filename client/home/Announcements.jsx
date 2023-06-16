@@ -28,8 +28,6 @@ export default function Announcements({teamName, announceList}) {
 
     if (oldAnnouncements.length === 0) {
       setSeeMore(false);
-    } else {
-      setSeeMore(true);
     }
     setOldAnnounce(oldAnnouncements);
     setNewAnnounce(newAnnouncements);
