@@ -35,7 +35,9 @@ export default function Announcements({teamName, announceList}) {
   return (
     <View style={styles.container}>
       <View style={styles.nameBar}>
-        <Text style={styles.leagueName}>{teamName}</Text>
+        <View style={styles.leagueNameContainer}>
+          <Text style={styles.leagueName}>{teamName}</Text>
+        </View>
         {oldAnnounce.length > 0 && <TouchableOpacity style={styles.prevAnnounce} onPress={() => setSeeMore(!seeMore)}>
           <Text style={styles.prevAnnounce}>See Previous</Text>
         </TouchableOpacity>}

@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#272838',
     margin: 10,
     marginLeft: 20,
-    padding: 8
+    padding: 8,
+    borderRadius: 10
   },
   dateText: {
     color: '#FFF',

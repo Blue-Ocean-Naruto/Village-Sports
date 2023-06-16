@@ -21,25 +21,23 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 8,
     padding: 10,
-    height: 200,
-    width: 150,
+    height: 225,
+    width: 175,
     backgroundColor: '#D9D9D918',
     marginRight: 7
   },
   leagueName: {
     color: 'white',
     backgroundColor: '#272838',
-    height: 30,
-    width: 125,
+    width: '100%',
     display: 'flex',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    fontSize: 10,
-    marginBottom: 5
+    fontSize: 14,
+    marginBottom: 5,
+    padding: 5
   },
   teamName: {
     color: '#CEB992',
-    fontSize: 12,
+    fontSize: 14,
     display: 'flex',
     alignSelf: 'center',
     justifyContent: 'center',
@@ -48,8 +46,8 @@ const styles = StyleSheet.create({
   infoCard: {
     border: '2px groove #9B7C43',
     borderRadius: 8,
-    height: 125,
     backgroundColor: 'rgba(206, 185, 146, 0.8)',
-    padding: 5
+    padding: 10,
+    marginBottom: 8
   }
 });
