@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   teamButtonContainer: {
     borderWidth: 1,
-    backgroundColor: '#575552',  // Button background color
+    backgroundColor: '#ADD8E5',  // Button background color
     borderRadius: 5,
     overflow: 'hidden',
     marginLeft: 20,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonText: {
-    color: 'white',  // Button text color
+    color: 'black',  // Button text color
     fontSize: 16,
   },
   leagueButtonText: {
