@@ -4,12 +4,14 @@ import { db } from '../../firebase';
 import { collection, query, onSnapshot, orderBy, doc, getDoc, addDoc, serverTimestamp } from 'firebase/firestore';
 import LinearView from '../sharedComponents/LinearView.jsx'
 import UsernameContext from '../sharedComponents/UsernameContext.jsx'
+import ProfileButton from '../profile/profileButton.jsx'
 
 const ChatRoom = ({ navigation, route }) => {
-  const [username, setUsername] = useContext(UsernameContext);
+  const {username, setUsername} = useContext(UsernameContext);
   const [message, setMessage] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   var roomName = route.params.roomName;
+  // console.log(roomName)
 
   const scrollViewRef = useRef();
 
@@ -55,7 +57,8 @@ const ChatRoom = ({ navigation, route }) => {
             if (chat.user_name === username) {
               return (
                 <View key={index} style={styles.myMessageContainer}>
-                  <Text style={styles.myUserName}>{chat.user_name}</Text>
+                  <ProfileButton navigation={navigation} username={chat.user_name} component={(<Text style={styles.myUserName}>{chat.user_name}</Text>)} />
+
                   <View style={styles.myMessageBubble}>
                     <Text style={styles.myUserMessage}>{chat.message}</Text>
                   </View>
@@ -64,7 +67,8 @@ const ChatRoom = ({ navigation, route }) => {
             } else {
               return (
                 <View key={index} style={styles.messageContainer}>
-                  <Text style={styles.userName}>{chat.user_name}</Text>
+                  <ProfileButton navigation={navigation} username={chat.user_name} component={(<Text style={styles.userName}>{chat.user_name}</Text>)} />
+
                   <View style={styles.messageBubble}>
                     <Text style={styles.userMessage}>{chat.message}</Text>
                   </View>

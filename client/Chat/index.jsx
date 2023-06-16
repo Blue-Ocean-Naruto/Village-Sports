@@ -10,36 +10,50 @@ const ChatSelection = ({ navigation }) => {
   return (
       <LinearView>
         <Text style={styles.title}>
-          Messages
+          Chat Rooms
         </Text>
         <View style={styles.container}>
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              navigation.navigate('chatRoom', { roomName: 'Softball League' });
+              navigation.navigate('chatRoom', { roomName: 'San Jose Ballers' });
             }}>
-            <Text style={styles.leagueButtonText}>Softball League</Text>
+            <Text style={styles.leagueButtonText}>San Jose Ballers</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.teamButtonContainer}
             onPress={() => {
-              navigation.navigate('chatRoom', { roomName: 'The Hardballs' });
+              navigation.navigate('chatRoom', { roomName: 'Dunk Dynasty' });
             }}>
-            <Text style={styles.buttonText}>The Hardballs</Text>
+            <Text style={styles.buttonText}>Dunk Dynasty</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => {
-              navigation.navigate('chatRoom', { roomName: 'LCS' });
+              navigation.navigate('chatRoom', { roomName: 'Elite eSports League' });
             }}>
-            <Text style={styles.leagueButtonText}>LCS</Text>
+            <Text style={styles.leagueButtonText}>Elite eSports League</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.teamButtonContainer}
             onPress={() => {
-              navigation.navigate('chatRoom', { roomName: 'TSM' });
+              navigation.navigate('chatRoom', { roomName: 'Nebula Nexus' });
             }}>
-            <Text style={styles.buttonText}>TSM</Text>
+            <Text style={styles.buttonText}>Nebula Nexus</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={() => {
+              navigation.navigate('chatRoom', { roomName: 'NorCal Tennis' });
+            }}>
+            <Text style={styles.leagueButtonText}>NorCal Tennis</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.teamButtonContainer}
+            onPress={() => {
+              navigation.navigate('chatRoom', { roomName: 'Volley Vipers' });
+            }}>
+            <Text style={styles.buttonText}>Volley Vipers</Text>
           </TouchableOpacity>
         </View>
       </LinearView>
