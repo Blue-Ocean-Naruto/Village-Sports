@@ -11,6 +11,11 @@ Chat [(Michael Del Pape)](https://www.linkedin.com/in/delpapemichael/)
 **Description:**\
 Village Sports is a mobile application aimed towards promoting community engagement amongst young adults in metropolitan areas by providing a one-stop-shop for finding local recreational leagues, e.g. sports, games, arts.
 
+<div align="center">
+  <img src="https://github.com/Blue-Ocean-Naruto/Village-Sports/assets/106457612/92fa0d63-30d2-413a-9bd6-6eade4ff4087" width ="30%" aspect-ratio="1/1"/>
+  <img src="https://github.com/Blue-Ocean-Naruto/Village-Sports/assets/106457612/95b9266b-1093-439f-abb4-cd04205737a4" width ="30.2%" aspect-ratio="1/1"/>
+</div>
+
 **Installation:**
 1. Clone this repository
 2. `npm install` from the root directory
